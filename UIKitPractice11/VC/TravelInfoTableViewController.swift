@@ -12,6 +12,7 @@ class TravelInfoTableViewController: UITableViewController {
     let travelInfo = TravelInfo()
     
     // TODO: 메모리 절약
+    // TODO: ad 처리
     
     override func viewDidLoad() {
         print(#file, #function)
