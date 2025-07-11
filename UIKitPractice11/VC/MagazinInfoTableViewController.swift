@@ -18,7 +18,10 @@ class MagazinInfoTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "preview", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: MagazineInfoTableViewCell.identifier,
+            for: indexPath
+        ) as? MagazineInfoTableViewCell else { return UITableViewCell()}
         
         return cell
     }
