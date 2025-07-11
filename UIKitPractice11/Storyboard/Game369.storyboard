@@ -16,14 +16,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GEK-Lw-5DZ">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="최대 숫자를 입력해주세요" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GEK-Lw-5DZ">
                                 <rect key="frame" x="44" y="162" width="305" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Skd-u1-4F8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                 <connections>
+                                    <action selector="inputTextFieldDidEndOnExit:" destination="Y6W-OH-hqX" eventType="editingDidEndOnExit" id="c6w-xG-EEG"/>
                                     <action selector="inputTextFieldEditingDidEnd:" destination="Y6W-OH-hqX" eventType="editingDidEnd" id="ZRO-HJ-C9C"/>
                                 </connections>
                             </textField>
@@ -45,6 +46,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="an2-gt-AHJ" firstAttribute="trailing" secondItem="GEK-Lw-5DZ" secondAttribute="trailing" id="4Ld-JN-Cff"/>
                             <constraint firstItem="1ww-cJ-qpk" firstAttribute="top" secondItem="an2-gt-AHJ" secondAttribute="bottom" constant="44" id="5xX-6B-JoX"/>
@@ -57,14 +59,22 @@
                             <constraint firstItem="1ww-cJ-qpk" firstAttribute="height" secondItem="an2-gt-AHJ" secondAttribute="height" id="uGx-bi-zn8"/>
                             <constraint firstItem="GEK-Lw-5DZ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="44" id="ztT-kz-YLt"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="AjR-pe-7PH" appends="YES" id="pYV-c0-5WJ"/>
+                        </connections>
                     </view>
                     <connections>
-                        <outlet property="clapLabel" destination="an2-gt-AHJ" id="S8f-jP-yJO"/>
                         <outlet property="countLabel" destination="1ww-cJ-qpk" id="qM7-Ue-aE5"/>
                         <outlet property="inputTextField" destination="GEK-Lw-5DZ" id="TIF-yi-7QU"/>
+                        <outlet property="numberLabel" destination="an2-gt-AHJ" id="S8f-jP-yJO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="AjR-pe-7PH">
+                    <connections>
+                        <action selector="returnKeyboard:" destination="Y6W-OH-hqX" id="scL-70-2bP"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="49" y="-2"/>
         </scene>

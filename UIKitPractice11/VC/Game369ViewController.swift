@@ -9,11 +9,19 @@ import UIKit
 
 class Game369ViewController: ViewController {
     @IBOutlet var inputTextField: UITextField!
-    @IBOutlet var clapLabel: UILabel!
+    @IBOutlet var numberLabel: UILabel!
     @IBOutlet var countLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    @IBAction func inputTextFieldDidEndOnExit(_ sender: UITextField) {
+        print(#function)
+    }
+    
+    @IBAction func returnKeyboard(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
     
     @IBAction func inputTextFieldEditingDidEnd(_ sender: UITextField) {
