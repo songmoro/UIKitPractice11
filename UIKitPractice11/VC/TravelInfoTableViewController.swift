@@ -8,6 +8,8 @@
 import UIKit
 
 class TravelInfoTableViewController: UITableViewController {
+    let travelInfo = TravelInfo()
+    
     override func viewDidLoad() {
         print(#file, #function)
         super.viewDidLoad()
