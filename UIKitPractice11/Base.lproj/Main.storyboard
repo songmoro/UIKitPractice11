@@ -23,10 +23,10 @@
             </objects>
             <point key="canvasLocation" x="60" y="28"/>
         </scene>
-        <!--Storyboard Reference-->
+        <!--Game369-->
         <scene sceneID="Tpk-kj-KpH">
             <objects>
-                <viewControllerPlaceholder id="fFV-x0-3Yc" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Game369" id="fFV-x0-3Yc" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="4PW-0c-02O"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="66G-sK-IPk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -8,7 +8,15 @@
 import UIKit
 
 class Game369ViewController: ViewController {
+    @IBOutlet var inputTextField: UITextField!
+    @IBOutlet var clapLabel: UILabel!
+    @IBOutlet var countLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    @IBAction func inputTextFieldEditingDidEnd(_ sender: UITextField) {
+        print(#function)
     }
 }
