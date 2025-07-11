@@ -8,13 +8,15 @@
 import UIKit
 
 class MagazinInfoTableViewController: UITableViewController {
+    let magazineInfo = MagazineInfo()
+    
     override func viewDidLoad() {
         print(#file, #function)
         super.viewDidLoad()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        magazineInfo.magazine.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -23,10 +25,14 @@ class MagazinInfoTableViewController: UITableViewController {
             for: indexPath
         ) as? MagazineInfoTableViewCell else { return UITableViewCell()}
         
+        cell.title.text = magazineInfo.magazine[indexPath.row].title
+        cell.subtitle.text = magazineInfo.magazine[indexPath.row].subtitle
+        cell.date.text = magazineInfo.magazine[indexPath.row].date
+        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        120
+        600
     }
 }

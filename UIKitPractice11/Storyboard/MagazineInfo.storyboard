@@ -53,46 +53,46 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJA-Pr-ilj">
-                                            <rect key="frame" x="64" y="300" width="265" height="44"/>
+                                            <rect key="frame" x="64" y="300" width="265" height="52"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="44" id="cMk-Ov-cJw"/>
+                                                <constraint firstAttribute="height" constant="52" id="cMk-Ov-cJw"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yjj-mj-t2x">
-                                            <rect key="frame" x="64" y="354" width="265" height="21"/>
+                                            <rect key="frame" x="64" y="362" width="265" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" systemColor="systemGray2Color"/>
+                                            <color key="textColor" systemColor="systemGrayColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XkQ-xJ-w95">
-                                            <rect key="frame" x="64" y="385" width="265" height="15.666666666666686"/>
+                                            <rect key="frame" x="64" y="393" width="265" height="15.666666666666686"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <color key="textColor" systemColor="systemGray2Color"/>
+                                            <color key="textColor" systemColor="systemGrayColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="oJA-Pr-ilj" secondAttribute="trailing" constant="44" id="EQs-TY-oX3"/>
                                         <constraint firstItem="oJA-Pr-ilj" firstAttribute="top" secondItem="9le-P4-wXX" secondAttribute="bottom" constant="12" id="Fpl-fV-ymY"/>
                                         <constraint firstItem="XkQ-xJ-w95" firstAttribute="top" secondItem="yjj-mj-t2x" secondAttribute="bottom" constant="10" id="Hg5-Bs-3xf"/>
-                                        <constraint firstItem="oJA-Pr-ilj" firstAttribute="leading" secondItem="9le-P4-wXX" secondAttribute="leading" id="Iqw-8H-b4h"/>
-                                        <constraint firstItem="XkQ-xJ-w95" firstAttribute="leading" secondItem="yjj-mj-t2x" secondAttribute="leading" id="Ni0-5d-QYA"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="yjj-mj-t2x" secondAttribute="trailing" constant="44" id="LcC-m3-Tpn"/>
                                         <constraint firstItem="9le-P4-wXX" firstAttribute="leading" secondItem="dgY-xq-UM3" secondAttribute="leadingMargin" constant="44" id="Sqj-JQ-ABz"/>
-                                        <constraint firstItem="XkQ-xJ-w95" firstAttribute="width" secondItem="yjj-mj-t2x" secondAttribute="width" id="cvA-lz-X7c"/>
-                                        <constraint firstItem="yjj-mj-t2x" firstAttribute="width" secondItem="oJA-Pr-ilj" secondAttribute="width" id="eJN-Tm-MG0"/>
+                                        <constraint firstItem="oJA-Pr-ilj" firstAttribute="leading" secondItem="dgY-xq-UM3" secondAttribute="leadingMargin" constant="44" id="Tcv-X7-GcQ"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="9le-P4-wXX" secondAttribute="trailing" constant="44" id="fqF-h8-lyd"/>
-                                        <constraint firstItem="yjj-mj-t2x" firstAttribute="leading" secondItem="oJA-Pr-ilj" secondAttribute="leading" id="hNe-B2-TgG"/>
-                                        <constraint firstItem="oJA-Pr-ilj" firstAttribute="width" secondItem="9le-P4-wXX" secondAttribute="width" id="lWR-bt-Au7"/>
+                                        <constraint firstItem="XkQ-xJ-w95" firstAttribute="leading" secondItem="dgY-xq-UM3" secondAttribute="leadingMargin" constant="44" id="hWh-Pu-AvI"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="XkQ-xJ-w95" secondAttribute="trailing" constant="44" id="jaa-FH-hvs"/>
+                                        <constraint firstItem="yjj-mj-t2x" firstAttribute="leading" secondItem="dgY-xq-UM3" secondAttribute="leadingMargin" constant="44" id="rSs-nR-68I"/>
                                         <constraint firstItem="9le-P4-wXX" firstAttribute="top" secondItem="dgY-xq-UM3" secondAttribute="topMargin" constant="12" id="tGb-Cn-0bb"/>
                                         <constraint firstItem="yjj-mj-t2x" firstAttribute="top" secondItem="oJA-Pr-ilj" secondAttribute="bottom" constant="10" id="tKw-Ey-jd9"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="date" destination="yjj-mj-t2x" id="w2U-Mo-6GT"/>
+                                    <outlet property="date" destination="XkQ-xJ-w95" id="TgN-Kp-nBW"/>
                                     <outlet property="photo_image" destination="9le-P4-wXX" id="jef-pJ-qJh"/>
-                                    <outlet property="subtitle" destination="XkQ-xJ-w95" id="TgN-Kp-nBW"/>
+                                    <outlet property="subtitle" destination="yjj-mj-t2x" id="w2U-Mo-6GT"/>
                                     <outlet property="title" destination="oJA-Pr-ilj" id="PhJ-rf-2lk"/>
                                 </connections>
                             </tableViewCell>
@@ -116,8 +116,8 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGrayColor">
+            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -10,12 +10,14 @@ import UIKit
 class MagazineInfoTableViewCell: UITableViewCell {
     static let identifier = "magazineInfoTableViewCell"
     
+    @IBOutlet var photo_image: UIImageView!
     @IBOutlet var title: UILabel!
     @IBOutlet var subtitle: UILabel!
-    @IBOutlet var photo_image: UIImageView!
     @IBOutlet var date: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.layer.borderColor = UIColor.red.cgColor
+        self.layer.borderWidth = 2
     }
 }
