@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		F833BB7A2E2110BF0004FB87 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F833BB792E2110BF0004FB87 /* Kingfisher */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		F8986E5B2E20E17E0037D007 /* UIKitPractice11.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitPractice11.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F833BB7A2E2110BF0004FB87 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,7 @@
 			);
 			name = UIKitPractice11;
 			packageProductDependencies = (
+				F833BB792E2110BF0004FB87 /* Kingfisher */,
 			);
 			productName = UIKitPractice11;
 			productReference = F8986E5B2E20E17E0037D007 /* UIKitPractice11.app */;
@@ -107,6 +113,9 @@
 			);
 			mainGroup = F8986E522E20E17E0037D007;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				F833BB782E2110BF0004FB87 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F8986E5C2E20E17E0037D007 /* Products */;
 			projectDirPath = "";
@@ -339,6 +348,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F833BB782E2110BF0004FB87 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F833BB792E2110BF0004FB87 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F833BB782E2110BF0004FB87 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F8986E532E20E17E0037D007 /* Project object */;
 }
