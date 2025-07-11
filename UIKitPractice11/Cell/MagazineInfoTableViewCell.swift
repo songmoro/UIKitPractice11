@@ -17,7 +17,6 @@ class MagazineInfoTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.layer.borderColor = UIColor.red.cgColor
-        self.layer.borderWidth = 2
+        photo_image.layer.cornerRadius = 12
     }
 }

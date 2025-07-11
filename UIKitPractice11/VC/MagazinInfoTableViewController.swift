@@ -6,13 +6,22 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MagazinInfoTableViewController: UITableViewController {
     let magazineInfo = MagazineInfo()
     
+    // TODO: 셀 높이 구해서 rowHeight 계산
+    // TODO: 타이틀 1줄, 2줄에 따른 레이블 높이
+    // TODO: 데이트 스트링 데이트 포매터
+    // TODO: prepareForReuse
+    // TODO: 플레이스홀더
+    // TODO: 키패스 접근 시도
+    
     override func viewDidLoad() {
         print(#file, #function)
         super.viewDidLoad()
+        tableView.rowHeight = 450
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -25,14 +34,18 @@ class MagazinInfoTableViewController: UITableViewController {
             for: indexPath
         ) as? MagazineInfoTableViewCell else { return UITableViewCell()}
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyMMdd"
+        let formattedDate = dateFormatter.date(from: magazineInfo.magazine[indexPath.row].date)
+        dateFormatter.dateFormat = "yy년 MM월 dd일"
+        let cellDate = dateFormatter.string(from: formattedDate!)
+        
+        let url = URL(string: magazineInfo.magazine[indexPath.row].photo_image)!
+        cell.photo_image.kf.setImage(with: url, options: [])
         cell.title.text = magazineInfo.magazine[indexPath.row].title
         cell.subtitle.text = magazineInfo.magazine[indexPath.row].subtitle
-        cell.date.text = magazineInfo.magazine[indexPath.row].date
+        cell.date.text = cellDate
         
         return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        600
     }
 }

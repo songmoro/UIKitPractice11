@@ -7,14 +7,6 @@
 
 import Foundation
 
-struct Magazine {
-    let title: String
-    let subtitle: String
-    let photo_image: String
-    let date: String
-    let link: String
-}
-
 struct MagazineInfo {
     let magazine: [Magazine] = [
         Magazine(title: "유럽 여행 쇼핑 성지, OOO은 꼭 가세요!", subtitle: "유럽의 인기 쇼핑 명소 총정리", photo_image: "https://cdn.pixabay.com/photo/2016/11/22/21/57/apparel-1850804_1280.jpg", date: "241118", link: "https://triple.guide/articles/265bd919-3f75-4adc-8d5d-c5cf60201bfe"),
