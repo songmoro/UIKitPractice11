@@ -7,11 +7,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--SeSAC Travel-->
         <scene sceneID="xFd-fW-xJ4">
             <objects>
-                <navigationController id="1qX-42-Ib1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Gls-cO-k4N"/>
+                <navigationController title="SeSAC Travel" id="1qX-42-Ib1" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="SeSAC Travel" image="magazine" catalog="system" selectedImage="magazine.fill" id="Gls-cO-k4N"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hfy-Rw-Hhq">
                         <rect key="frame" x="0.0" y="118" width="393" height="44"/>
@@ -110,6 +110,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="magazine" catalog="system" width="110" height="128"/>
+        <image name="magazine.fill" catalog="system" width="110" height="128"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

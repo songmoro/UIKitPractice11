@@ -8,11 +8,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--369-->
         <scene sceneID="Im2-6X-g2I">
             <objects>
-                <navigationController id="fa3-Ho-yPE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="wUi-ah-fp7"/>
+                <navigationController title="369" id="fa3-Ho-yPE" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="369" image="36.circle" catalog="system" selectedImage="36.circle.fill" id="wUi-ah-fp7"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="llJ-nq-bdF">
                         <rect key="frame" x="0.0" y="118" width="393" height="44"/>
@@ -99,6 +99,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="36.circle" catalog="system" width="128" height="123"/>
+        <image name="36.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
