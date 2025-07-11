@@ -1,5 +1,5 @@
 //
-//  Game369ViewController.swift
+//  GameViewController.swift
 //  UIKitPractice11
 //
 //  Created by 송재훈 on 7/11/25.
@@ -7,12 +7,13 @@
 
 import UIKit
 
-class Game369ViewController: ViewController {
+class GameViewController: ViewController {
     @IBOutlet var inputTextField: UITextField!
     @IBOutlet var numberLabel: UILabel!
     @IBOutlet var countLabel: UILabel!
     
     override func viewDidLoad() {
+        print(#file, #function)
         super.viewDidLoad()
     }
     
@@ -46,9 +47,9 @@ class Game369ViewController: ViewController {
         return (1...number).reduce(into: (0, [String]())) { partialResult, i in
             var str = String(i)
             
-            if str.contains(where: { "369".contains($0) }) {
+            if str.contains(where: \.is369) {
                 str = str.map {
-                    if "369".contains($0) {
+                    if $0.is369 {
                         partialResult.0 += 1
                         return "👏"
                     }
@@ -59,5 +60,11 @@ class Game369ViewController: ViewController {
             
             partialResult.1.append(str)
         }
+    }
+}
+
+extension Character {
+    var is369: Bool {
+        "369".contains(self)
     }
 }

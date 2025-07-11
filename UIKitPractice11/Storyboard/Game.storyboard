@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fa3-Ho-yPE">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
@@ -8,16 +8,34 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Game369 View Controller-->
+        <!--Item-->
+        <scene sceneID="Im2-6X-g2I">
+            <objects>
+                <navigationController id="fa3-Ho-yPE" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="wUi-ah-fp7"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="llJ-nq-bdF">
+                        <rect key="frame" x="0.0" y="118" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="Ni1-Du-Bxy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4JQ-ku-Uw8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-807" y="-2"/>
+        </scene>
+        <!--Game View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="Game369ViewController" customModule="UIKitPractice11" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc" customClass="Game369">
+                <viewController id="Y6W-OH-hqX" customClass="GameViewController" customModule="UIKitPractice11" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="최대 숫자를 입력해주세요" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GEK-Lw-5DZ">
-                                <rect key="frame" x="44" y="162" width="305" height="44"/>
+                                <rect key="frame" x="44" y="206" width="305" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Skd-u1-4F8"/>
                                 </constraints>
@@ -28,8 +46,8 @@
                                     <action selector="inputTextFieldEditingDidEnd:" destination="Y6W-OH-hqX" eventType="editingDidEnd" id="ZRO-HJ-C9C"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="an2-gt-AHJ">
-                                <rect key="frame" x="44" y="250" width="305" height="152.66666666666663"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="an2-gt-AHJ">
+                                <rect key="frame" x="44" y="294" width="305" height="152.66666666666663"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="an2-gt-AHJ" secondAttribute="height" multiplier="2:1" id="1ND-zx-jWD"/>
                                 </constraints>
@@ -38,7 +56,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ww-cJ-qpk">
-                                <rect key="frame" x="44" y="446.66666666666669" width="305" height="152.33333333333331"/>
+                                <rect key="frame" x="44" y="490.66666666666669" width="305" height="152.33333333333331"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -57,13 +75,13 @@
                             <constraint firstItem="an2-gt-AHJ" firstAttribute="top" secondItem="GEK-Lw-5DZ" secondAttribute="bottom" constant="44" id="h83-3f-74x"/>
                             <constraint firstItem="GEK-Lw-5DZ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="44" id="jeW-sz-kpG"/>
                             <constraint firstItem="1ww-cJ-qpk" firstAttribute="height" secondItem="an2-gt-AHJ" secondAttribute="height" id="uGx-bi-zn8"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="1ww-cJ-qpk" secondAttribute="bottom" constant="10" id="wfH-NP-r16"/>
                             <constraint firstItem="GEK-Lw-5DZ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="44" id="ztT-kz-YLt"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="AjR-pe-7PH" appends="YES" id="pYV-c0-5WJ"/>
                         </connections>
                     </view>
+                    <navigationItem key="navigationItem" id="CGm-bA-MMl"/>
                     <connections>
                         <outlet property="countLabel" destination="1ww-cJ-qpk" id="qM7-Ue-aE5"/>
                         <outlet property="inputTextField" destination="GEK-Lw-5DZ" id="TIF-yi-7QU"/>
