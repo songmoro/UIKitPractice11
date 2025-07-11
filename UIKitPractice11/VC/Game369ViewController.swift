@@ -26,12 +26,22 @@ class Game369ViewController: ViewController {
     
     @IBAction func inputTextFieldEditingDidEnd(_ sender: UITextField) {
         print(#function)
-        print(calculate(sender.text))
+        let text = sender.text!
+        let (clap, labelText) = calculate(text)
+        
+        if let clap {
+            countLabel.text = "숫자 \(text)까지 총 박수는 \(clap)번 입니다."
+            numberLabel.text = labelText.joined(separator: ", ")
+        }
+        else {
+            countLabel.text = "입력한 값이 올바르지 않습니다."
+            numberLabel.text = ""
+        }
     }
     
-    func calculate(_ text: String?) -> (Int?, [String]) {
-        guard let text = text else { return (nil, []) }
+    func calculate(_ text: String) -> (Int?, [String]) {
         guard let number = Int(text) else { return (nil, []) }
+        guard number >= 1 else { return (nil, []) }
         
         return (1...number).reduce(into: (0, [String]())) { partialResult, i in
             var str = String(i)

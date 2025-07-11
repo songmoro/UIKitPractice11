@@ -28,7 +28,7 @@
                                     <action selector="inputTextFieldEditingDidEnd:" destination="Y6W-OH-hqX" eventType="editingDidEnd" id="ZRO-HJ-C9C"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="an2-gt-AHJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="an2-gt-AHJ">
                                 <rect key="frame" x="44" y="250" width="305" height="152.66666666666663"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="an2-gt-AHJ" secondAttribute="height" multiplier="2:1" id="1ND-zx-jWD"/>
@@ -57,6 +57,7 @@
                             <constraint firstItem="an2-gt-AHJ" firstAttribute="top" secondItem="GEK-Lw-5DZ" secondAttribute="bottom" constant="44" id="h83-3f-74x"/>
                             <constraint firstItem="GEK-Lw-5DZ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="44" id="jeW-sz-kpG"/>
                             <constraint firstItem="1ww-cJ-qpk" firstAttribute="height" secondItem="an2-gt-AHJ" secondAttribute="height" id="uGx-bi-zn8"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="1ww-cJ-qpk" secondAttribute="bottom" constant="10" id="wfH-NP-r16"/>
                             <constraint firstItem="GEK-Lw-5DZ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="44" id="ztT-kz-YLt"/>
                         </constraints>
                         <connections>
