@@ -15,8 +15,6 @@ class TravelInfoTableViewController: UITableViewController {
     override func viewDidLoad() {
         print(#file, #function)
         super.viewDidLoad()
-        
-        tableView.rowHeight = 150
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,17 +57,6 @@ class TravelInfoTableViewController: UITableViewController {
         guard let cell = tableView.cellForRow(at: indexPath) as? TravelInfoCell else { return }
         guard cell.travel != nil else { return }
         cell.travel!.grade = CGFloat(Int.random(in: 0...5))
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let travel = travelInfo.travel[indexPath.row]
-        
-        if travel.ad != nil, travel.ad! {
-            return 100
-        }
-        else {
-            return 150
-        }
     }
 }
 
