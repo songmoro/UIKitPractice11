@@ -40,6 +40,7 @@ class GameViewController: ViewController {
         }
     }
     
+    // TODO: 중복 계산 감소 시키기
     func calculate(_ text: String) -> (Int?, [String]) {
         guard let number = Int(text) else { return (nil, []) }
         guard number >= 1 else { return (nil, []) }
@@ -60,11 +61,5 @@ class GameViewController: ViewController {
             
             partialResult.1.append(str)
         }
-    }
-}
-
-extension Character {
-    var is369: Bool {
-        "369".contains(self)
     }
 }

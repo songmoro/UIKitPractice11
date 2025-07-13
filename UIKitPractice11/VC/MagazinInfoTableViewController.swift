@@ -22,6 +22,8 @@ class MagazinInfoTableViewController: UITableViewController {
     let magazineInfo = MagazineInfo()
     
     // TODO: 셀 높이 구해서 rowHeight 계산
+    // TODO: 데이트 포매터 다른 방법
+    // TODO: 셀 타입 캐스팅 가독성 향상시키기
     
     override func viewDidLoad() {
         print(#file, #function)

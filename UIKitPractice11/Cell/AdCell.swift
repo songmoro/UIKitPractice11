@@ -10,6 +10,11 @@ import UIKit
 class AdCell: UITableViewCell, HasIdentifier {
     static let identifier = "adCell"
     
+    // TODO: 인풋 프로토콜 선언
+    // TODO: 인풋 프로토콜 prepareForReuse
+    // TODO: 인풋 프로토콜 updateLabels()
+    // TODO: prepareForReuse 초기 상태 누락 방지 방안
+    
     @IBOutlet var backgroundShape: UIView!
     @IBOutlet var adLabelBackground: UIView!
     @IBOutlet var adTextLabel: UILabel!
