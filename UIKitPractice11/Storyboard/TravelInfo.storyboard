@@ -102,11 +102,9 @@
                                         </imageView>
                                         <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2Q-cp-fpr">
                                             <rect key="frame" x="346" y="26" width="32" height="32"/>
-                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="tintColor" systemColor="labelColor"/>
                                             <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="plain" image="heart.fill" catalog="system">
-                                                <color key="baseForegroundColor" systemColor="labelColor"/>
-                                            </buttonConfiguration>
+                                            <buttonConfiguration key="configuration" style="plain" image="heart.fill" catalog="system"/>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="InK-yr-e4Y">
                                             <rect key="frame" x="346" y="26" width="32" height="32"/>
@@ -116,6 +114,9 @@
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system"/>
+                                            <connections>
+                                                <action selector="likeButtonTapped:" destination="lUY-CA-qy9" eventType="touchUpInside" id="TZB-OA-HsJ"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZx-rt-Qkl">
                                             <rect key="frame" x="85" y="59.666666666666657" width="41.333333333333343" height="14"/>
@@ -151,6 +152,7 @@
                                     <outlet property="descriptionLabel" destination="rYI-n2-wOs" id="EVE-do-qwL"/>
                                     <outlet property="gradeAndSaveLabel" destination="UZx-rt-Qkl" id="3mR-md-ZD1"/>
                                     <outlet property="likeButton" destination="InK-yr-e4Y" id="tgK-ae-AnL"/>
+                                    <outlet property="likeButtonBackground" destination="d2Q-cp-fpr" id="lR3-Ie-sQv"/>
                                     <outlet property="title" destination="n3l-ln-okW" id="Fjm-fP-U4q"/>
                                     <outlet property="travel_image" destination="H1t-k0-6AE" id="exX-TJ-kAb"/>
                                     <outletCollection property="stars" destination="zX9-a4-s7O" collectionClass="NSMutableArray" id="He9-Hc-I5z"/>

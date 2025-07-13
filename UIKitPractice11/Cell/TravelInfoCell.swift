@@ -26,6 +26,7 @@ class TravelInfoCell: UITableViewCell, HasIdentifier {
     @IBOutlet var gradeAndSaveLabel: UILabel!
     @IBOutlet var travel_image: UIImageView!
     @IBOutlet var likeButton: UIButton!
+    @IBOutlet var likeButtonBackground: UIButton!
     
     var travel: Input? {
         didSet { updateLabels() }
@@ -40,6 +41,11 @@ class TravelInfoCell: UITableViewCell, HasIdentifier {
         travel = nil
     }
     
+    @IBAction func likeButtonTapped(_ sender: UIButton) {
+        guard travel != nil else { return }
+        travel!.like?.toggle()
+    }
+    
     func updateLabels() {
         guard let travel else {
             travel_image.image = nil
@@ -47,6 +53,7 @@ class TravelInfoCell: UITableViewCell, HasIdentifier {
             descriptionLabel.text = ""
             gradeAndSaveLabel.text = ""
             updateStars(to: 0)
+            updateLike(to: false)
             return
         }
         
@@ -63,12 +70,14 @@ class TravelInfoCell: UITableViewCell, HasIdentifier {
             descriptionLabel.text = descriptionText
         }
         
-        guard let grade = travel.grade else { return }
+        guard let grade = travel.grade,
+              let like = travel.like else { return }
         var gradeAndSaveText = "(\(grade))"
         updateStars(to: Int(grade))
+        updateLike(to: like)
         
         if let save = travel.save {
-            gradeAndSaveText.append("∙저장 \(save.formatted(.number))")
+            gradeAndSaveText.append("∙저장 \((save + (like ? 1 : 0)).formatted(.number))")
         }
         
         gradeAndSaveLabel.text = gradeAndSaveText
@@ -77,6 +86,17 @@ class TravelInfoCell: UITableViewCell, HasIdentifier {
     func updateStars(to: Int) {
         for i in 0...(stars.count - 1) {
             stars[i].tintColor = i < to ? .systemYellow : .systemGray
+        }
+    }
+    
+    func updateLike(to status: Bool) {
+        if status {
+            likeButtonBackground.alpha = 1
+            likeButtonBackground.tintColor = .systemPink
+        }
+        else {
+            likeButtonBackground.alpha = 0.3
+            likeButtonBackground.tintColor = .label
         }
     }
 }

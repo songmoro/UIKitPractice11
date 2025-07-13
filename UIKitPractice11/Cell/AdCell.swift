@@ -14,6 +14,7 @@ class AdCell: UITableViewCell, HasIdentifier {
     // TODO: 인풋 프로토콜 prepareForReuse
     // TODO: 인풋 프로토콜 updateLabels()
     // TODO: prepareForReuse 초기 상태 누락 방지 방안
+    // TODO: updateLabels()에서 조건 불만족시 기본 값으로 설정하는 방안
     
     @IBOutlet var backgroundShape: UIView!
     @IBOutlet var adLabelBackground: UIView!
