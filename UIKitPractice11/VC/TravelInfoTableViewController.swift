@@ -12,7 +12,6 @@ class TravelInfoTableViewController: UITableViewController {
     let travelInfo = TravelInfo()
     
     // TODO: 메모리 절약
-    // TODO: ad 처리
     
     override func viewDidLoad() {
         print(#file, #function)
@@ -26,14 +25,25 @@ class TravelInfoTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: TravelInfoTableViewCell.identifier,
-            for: indexPath
-        ) as? TravelInfoTableViewCell else { return UITableViewCell() }
-        
-
         let travel = travelInfo.travel[indexPath.row]
-        cell.travel = TravelInfoTableViewCell.Input(
+        
+        if travel.ad != nil, travel.ad! {
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: AdCell.identifier,
+                for: indexPath
+            ) as? AdCell else { return UITableViewCell() }
+            
+            cell.adTextLabel.text = travel.title
+            
+            return cell
+        }
+        
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: TravelInfoCell.identifier,
+            for: indexPath
+        ) as? TravelInfoCell else { return UITableViewCell() }
+        
+        cell.travel = TravelInfoCell.Input(
             titleText: travel.title,
             descriptionText: travel.description,
             grade: travel.grade,
@@ -49,8 +59,23 @@ class TravelInfoTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? TravelInfoTableViewCell else { return }
+        if let cell = tableView.cellForRow(at: indexPath) as? AdCell {
+            print(cell.frame, cell.bounds)
+        }
+        
+        guard let cell = tableView.cellForRow(at: indexPath) as? TravelInfoCell else { return }
         guard cell.travel != nil else { return }
         cell.travel!.grade = CGFloat(Int.random(in: 0...5))
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let travel = travelInfo.travel[indexPath.row]
+        
+        if travel.ad != nil, travel.ad! {
+            return 100
+        }
+        else {
+            return 150
+        }
     }
 }

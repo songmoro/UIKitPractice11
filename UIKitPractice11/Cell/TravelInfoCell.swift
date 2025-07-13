@@ -1,5 +1,5 @@
 //
-//  TravelInfoTableViewCell.swift
+//  TravelInfoCell.swift
 //  UIKitPractice11
 //
 //  Created by 송재훈 on 7/11/25.
@@ -7,8 +7,8 @@
 
 import UIKit
 
-class TravelInfoTableViewCell: UITableViewCell {
-    static let identifier = "travelInfoTableViewCell"
+class TravelInfoCell: UITableViewCell {
+    static let identifier = "travelInfoCell"
     
     struct Input {
         let titleText: String
@@ -24,10 +24,9 @@ class TravelInfoTableViewCell: UITableViewCell {
     @IBOutlet var gradeAndSaveLabel: UILabel!
     @IBOutlet var travel_image: UIImageView!
     @IBOutlet var likeButton: UIButton!
+    
     var travel: Input? {
-        didSet {
-            updateLabels()
-        }
+        didSet { updateLabels() }
     }
     
     override func awakeFromNib() {
