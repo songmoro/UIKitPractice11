@@ -26,32 +26,35 @@ class TravelInfoTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let travel = travelInfo.travel[indexPath.row]
         
-        if travel.ad != nil, travel.ad! {
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: AdCell.identifier,
-                for: indexPath
-            ) as? AdCell else { return UITableViewCell() }
+        if travel.ad != nil,
+           travel.ad!,
+           let cell = tableView.dequeueReusableCell(
+            withIdentifier: AdCell.identifier,
+            for: indexPath
+           ) as? AdCell {
             
-            cell.adTextLabel.text = travel.title
+            cell.input = AdCell.Input(adText: travel.title)
+            
+            return cell
+        }
+        else if let cell = tableView.dequeueReusableCell(
+            withIdentifier: TravelInfoCell.identifier,
+            for: indexPath
+        ) as? TravelInfoCell {
+            
+            cell.travel = TravelInfoCell.Input(
+                imageURL: travel.travel_image,
+                titleText: travel.title,
+                descriptionText: travel.description,
+                grade: travel.grade,
+                save: travel.save,
+                like: travel.like
+            )
             
             return cell
         }
         
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: TravelInfoCell.identifier,
-            for: indexPath
-        ) as? TravelInfoCell else { return UITableViewCell() }
-        
-        cell.travel = TravelInfoCell.Input(
-            imageURL: travel.travel_image,
-            titleText: travel.title,
-            descriptionText: travel.description,
-            grade: travel.grade,
-            save: travel.save,
-            like: travel.like
-        )
-        
-        return cell
+        return UITableViewCell()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

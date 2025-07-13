@@ -13,11 +13,25 @@ class AdCell: UITableViewCell, HasIdentifier {
     @IBOutlet var backgroundShape: UIView!
     @IBOutlet var adLabelBackground: UIView!
     @IBOutlet var adTextLabel: UILabel!
+    var input: Input? {
+        didSet {
+            updateLabels()
+        }
+    }
+    
+    struct Input {
+        let adText: String
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         backgroundShape.layer.cornerRadius = 12
         adLabelBackground.layer.cornerRadius = 8
+    }
+    
+    func updateLabels() {
+        guard let input else { return }
+        adTextLabel.text = input.adText
     }
 }
