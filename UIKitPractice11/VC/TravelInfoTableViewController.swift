@@ -51,8 +51,11 @@ class TravelInfoTableViewController: UITableViewController {
             like: travel.like
         )
         
-        if let url = URL(string: travel.travel_image ?? "") {
-            cell.travel_image.kf.setImage(with: url)
+        if let imageURL = travel.travel_image, let url = URL(string: imageURL) {
+            cell.travel_image.kf.setImage(
+                with: url,
+                placeholder: UIImage(systemName: "arrow.circlepath")
+            )
         }
         
         return cell

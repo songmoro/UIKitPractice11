@@ -24,7 +24,6 @@ class MagazinInfoTableViewController: UITableViewController {
     
     // TODO: 셀 높이 구해서 rowHeight 계산
     // TODO: prepareForReuse
-    // TODO: 플레이스홀더
     
     override func viewDidLoad() {
         print(#file, #function)
@@ -54,11 +53,12 @@ class MagazinInfoTableViewController: UITableViewController {
             dateText: cellDate
         )
         
-        let url = URL(string: magazineInfo.magazine[indexPath.row].photo_image)!
-        cell.photo_image.kf.setImage(
-            with: url,
-            placeholder: UIImage(systemName: "arrow.circlepath")
-        )
+        if let url = URL(string: magazine.photo_image) {
+            cell.photo_image.kf.setImage(
+                with: url,
+                placeholder: UIImage(systemName: "arrow.circlepath")
+            )
+        }
         
         return cell
     }
