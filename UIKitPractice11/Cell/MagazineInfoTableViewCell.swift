@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MagazineInfoTableViewCell: UITableViewCell {
+class MagazineInfoTableViewCell: UITableViewCell, HasIdentifier {
     static let identifier = "magazineInfoTableViewCell"
     
     @IBOutlet var photo_image: UIImageView!

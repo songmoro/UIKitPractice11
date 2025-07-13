@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AdCell: UITableViewCell {
+class AdCell: UITableViewCell, HasIdentifier {
     static let identifier = "adCell"
     
     @IBOutlet var backgroundShape: UIView!

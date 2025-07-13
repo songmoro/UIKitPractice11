@@ -12,7 +12,6 @@ class MagazinInfoTableViewController: UITableViewController {
     let magazineInfo = MagazineInfo()
     
     // TODO: 셀 높이 구해서 rowHeight 계산
-    // TODO: 타이틀 1줄, 2줄에 따른 레이블 높이
     // TODO: 데이트 스트링 데이트 포매터
     // TODO: prepareForReuse
     // TODO: 플레이스홀더
@@ -21,7 +20,8 @@ class MagazinInfoTableViewController: UITableViewController {
     override func viewDidLoad() {
         print(#file, #function)
         super.viewDidLoad()
-        tableView.rowHeight = 450
+        
+        tableView.rowHeight = 480
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,7 +41,7 @@ class MagazinInfoTableViewController: UITableViewController {
         let cellDate = dateFormatter.string(from: formattedDate!)
         
         let url = URL(string: magazineInfo.magazine[indexPath.row].photo_image)!
-        cell.photo_image.kf.setImage(with: url, options: [])
+        cell.photo_image.kf.setImage(with: url, placeholder: UIImage(systemName: "arrow.circlepath"), options: [])
         cell.title.text = magazineInfo.magazine[indexPath.row].title
         cell.subtitle.text = magazineInfo.magazine[indexPath.row].subtitle
         cell.date.text = cellDate
