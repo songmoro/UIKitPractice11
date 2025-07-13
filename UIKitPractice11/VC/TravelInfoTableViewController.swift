@@ -26,22 +26,19 @@ class TravelInfoTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let travel = travelInfo.travel[indexPath.row]
         
-        if travel.ad != nil,
-           travel.ad!,
-           let cell = tableView.dequeueReusableCell(
-            withIdentifier: AdCell.identifier,
+        if travel.ad != nil, travel.ad!,
+           let cell = tableView.dequeueCustomCell(
+            of: AdCell.self,
             for: indexPath
-           ) as? AdCell {
-            
+           ) {
             cell.input = AdCell.Input(adText: travel.title)
             
             return cell
         }
-        else if let cell = tableView.dequeueReusableCell(
-            withIdentifier: TravelInfoCell.identifier,
+        else if let cell = tableView.dequeueCustomCell(
+            of: TravelInfoCell.self,
             for: indexPath
-        ) as? TravelInfoCell {
-            
+        ) { 
             cell.travel = TravelInfoCell.Input(
                 imageURL: travel.travel_image,
                 titleText: travel.title,
@@ -53,8 +50,9 @@ class TravelInfoTableViewController: UITableViewController {
             
             return cell
         }
-        
-        return UITableViewCell()
+        else {   
+            return UITableViewCell()
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -74,3 +72,5 @@ class TravelInfoTableViewController: UITableViewController {
         }
     }
 }
+
+

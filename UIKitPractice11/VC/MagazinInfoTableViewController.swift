@@ -22,7 +22,6 @@ class MagazinInfoTableViewController: UITableViewController {
     let magazineInfo = MagazineInfo()
     
     // TODO: 셀 높이 구해서 rowHeight 계산
-    // TODO: prepareForReuse
     
     override func viewDidLoad() {
         print(#file, #function)
@@ -36,24 +35,25 @@ class MagazinInfoTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: MagazineInfoTableViewCell.identifier,
-            for: indexPath
-        ) as? MagazineInfoTableViewCell else { return UITableViewCell() }
-        
         let magazine = magazineInfo.magazine[indexPath.row]
         
-        guard let cellDate = modelDateToCellDate(magazine.date)
-        else { return UITableViewCell()}
-        
-        cell.input = MagazineInfoTableViewCell.Input(
-            imageURL: magazine.photo_image,
-            titleText: magazine.title,
-            subtitleText: magazine.subtitle,
-            dateText: cellDate
-        )
-        
-        return cell
+        if let cell = tableView.dequeueCustomCell(
+            of: MagazineInfoTableViewCell.self,
+            for: indexPath
+        ), let cellDate = modelDateToCellDate(magazine.date) {
+            
+            cell.input = MagazineInfoTableViewCell.Input(
+                imageURL: magazine.photo_image,
+                titleText: magazine.title,
+                subtitleText: magazine.subtitle,
+                dateText: cellDate
+            )
+            
+            return cell
+        }
+        else {
+            return UITableViewCell()
+        }
     }
     
     func modelDateToCellDate(_ text: String) -> String? {
