@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 class MagazinInfoTableViewController: UITableViewController {
     let dateToStringFomatter: DateFormatter = {
@@ -48,17 +47,11 @@ class MagazinInfoTableViewController: UITableViewController {
         else { return UITableViewCell()}
         
         cell.input = MagazineInfoTableViewCell.Input(
+            imageURL: magazine.photo_image,
             titleText: magazine.title,
             subtitleText: magazine.subtitle,
             dateText: cellDate
         )
-        
-        if let url = URL(string: magazine.photo_image) {
-            cell.photo_image.kf.setImage(
-                with: url,
-                placeholder: UIImage(systemName: "arrow.circlepath")
-            )
-        }
         
         return cell
     }

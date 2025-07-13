@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MagazineInfoTableViewCell: UITableViewCell, HasIdentifier {
     static let identifier = "magazineInfoTableViewCell"
     
     struct Input {
+        let imageURL: String
         let titleText: String
         let subtitleText: String
         let dateText: String
@@ -31,8 +33,25 @@ class MagazineInfoTableViewCell: UITableViewCell, HasIdentifier {
         photo_image.layer.cornerRadius = 12
     }
     
+    override func prepareForReuse() {
+        input = nil
+    }
+    
     func updateLabels() {
-        guard let input else { return }
+        guard let input else {
+            photo_image.image = nil
+            title.text = ""
+            subtitle.text = ""
+            date.text = ""
+            return
+        }
+        
+        if let url = URL(string: input.imageURL) {
+            photo_image.kf.setImage(
+                with: url,
+                placeholder: UIImage(systemName: "arrow.circlepath")
+            )
+        }
         title.text = input.titleText
         subtitle.text = input.subtitleText
         date.text = input.dateText

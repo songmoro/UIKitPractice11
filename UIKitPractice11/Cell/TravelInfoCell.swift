@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import Kingfisher
 
 class TravelInfoCell: UITableViewCell, HasIdentifier {
     static let identifier = "travelInfoCell"
     
     struct Input {
+        let imageURL: String?
         let titleText: String
         let descriptionText: String?
         var grade: CGFloat?
@@ -39,8 +41,24 @@ class TravelInfoCell: UITableViewCell, HasIdentifier {
     }
     
     func updateLabels() {
-        guard let travel else { return }
+        guard let travel else {
+            travel_image.image = nil
+            title.text = ""
+            descriptionLabel.text = ""
+            gradeAndSaveLabel.text = ""
+            updateStars(to: 0)
+            return
+        }
+        
+        if let imageURL = travel.imageURL, let url = URL(string: imageURL) {
+            travel_image.kf.setImage(
+                with: url,
+                placeholder: UIImage(systemName: "arrow.circlepath")
+            )
+        }
+        
         title.text = travel.titleText
+        
         if let descriptionText = travel.descriptionText {
             descriptionLabel.text = descriptionText
         }
