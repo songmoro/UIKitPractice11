@@ -11,8 +11,6 @@ class TravelInfoTableViewController: UITableViewController {
     let travelInfo = TravelInfo()
     
     // TODO: 메모리 절약
-    // TODO: UITableView + Custom Cell initializer
-    // TODO: Input protocol
     // TODO: UITableView + Custom Cell Register 
     // TODO: UITableViewController Cell -> Xib Cell
     // TODO: kingfisher placeholder size
@@ -30,11 +28,13 @@ class TravelInfoTableViewController: UITableViewController {
         let travel = travelInfo.travel[indexPath.row]
         let cell = tableView.dequeueCustomCell(of: travel.cell, for: indexPath)
         
-        if cell is AdCell {
-            (cell as! AdCell).transform(travel)
-        }
-        else if cell is TravelInfoCell {
-            (cell as! TravelInfoCell).transform(travel)
+        switch cell {
+        case is AdCell:
+            (cell as! AdCell).put(travel)
+        case is TravelInfoCell:
+            (cell as! TravelInfoCell).put(travel)
+        default:
+            break
         }
         
         return cell ?? UITableViewCell()

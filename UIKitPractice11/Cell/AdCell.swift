@@ -14,7 +14,7 @@ extension AdCell {
         let adText: String
     }
     
-    func transform(_ input: Input) {
+    func put(_ input: Input) {
         model = Model(adText: input.title)
     }
 }

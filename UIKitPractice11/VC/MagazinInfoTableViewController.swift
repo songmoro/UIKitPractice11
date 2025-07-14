@@ -25,8 +25,11 @@ class MagazinInfoTableViewController: UITableViewController {
         let magazine = magazineInfo.magazine[indexPath.row]
         let cell = tableView.dequeueCustomCell(of: magazine.cell, for: indexPath)
         
-        if cell is MagazineInfoTableViewCell {
-            (cell as! MagazineInfoTableViewCell).transform(magazine)
+        switch cell {
+        case is MagazineInfoTableViewCell:
+            (cell as! MagazineInfoTableViewCell).put(magazine)
+        default:
+            break
         }
         
         return cell ?? UITableViewCell()

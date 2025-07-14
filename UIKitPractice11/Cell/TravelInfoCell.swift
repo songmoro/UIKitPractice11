@@ -20,7 +20,7 @@ extension TravelInfoCell {
         var like: Bool?
     }
     
-    func transform(_ input: Input) {
+    func put(_ input: Input) {
         model = Model(
             imageURL: input.travel_image,
             titleText: input.title,

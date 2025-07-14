@@ -11,7 +11,7 @@ import Kingfisher
 extension MagazineInfoTableViewCell {
     typealias Input = Magazine
     
-    func transform(_ input: Input) {
+    func put(_ input: Input) {
         model = Model(
             imageURL: input.photo_image,
             titleText: input.title,

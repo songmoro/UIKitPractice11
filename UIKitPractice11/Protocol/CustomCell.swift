@@ -17,5 +17,5 @@ protocol HasModel: AnyObject {
     associatedtype Input
     associatedtype Model
     
-    func transform(_ input: Input)
+    func put(_ input: Input)
 }
