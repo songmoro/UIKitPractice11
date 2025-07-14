@@ -29,10 +29,10 @@ class TravelInfoTableViewController: UITableViewController {
         let cell = tableView.dequeueCustomCell(of: travel.cell, for: indexPath)
         
         switch cell {
-        case is AdCell:
-            (cell as! AdCell).put(travel)
-        case is TravelInfoCell:
-            (cell as! TravelInfoCell).put(travel)
+        case let adCell as AdCell:
+            adCell.put(travel)
+        case let travelCell as TravelInfoCell:
+            travelCell.put(travel)
         default:
             break
         }
