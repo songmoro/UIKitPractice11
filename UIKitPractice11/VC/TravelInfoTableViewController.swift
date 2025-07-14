@@ -11,6 +11,11 @@ class TravelInfoTableViewController: UITableViewController {
     let travelInfo = TravelInfo()
     
     // TODO: 메모리 절약
+    // TODO: UITableView + Custom Cell initializer
+    // TODO: Input protocol
+    // TODO: UITableView + Custom Cell Register 
+    // TODO: UITableViewController Cell -> Xib Cell
+    // TODO: kingfisher placeholder size
     
     override func viewDidLoad() {
         print(#file, #function)
@@ -23,21 +28,16 @@ class TravelInfoTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let travel = travelInfo.travel[indexPath.row]
+        let cell = tableView.dequeueCustomCell(of: travel.cell, for: indexPath)
         
-        if travel.ad != nil, travel.ad!,
-           let cell = tableView.dequeueCustomCell(
-            of: AdCell.self,
-            for: indexPath
-           ) {
-            cell.input = AdCell.Input(adText: travel.title)
-            
-            return cell
+        if travel.cell is AdCell.Type {
+            let adCell = cell as! AdCell
+            adCell.input = AdCell.Input(adText: travel.title)
         }
-        else if let cell = tableView.dequeueCustomCell(
-            of: TravelInfoCell.self,
-            for: indexPath
-        ) { 
-            cell.travel = TravelInfoCell.Input(
+        else if travel.cell is TravelInfoCell.Type {
+            let travelInfoCell = cell as! TravelInfoCell
+            
+            travelInfoCell.travel = TravelInfoCell.Input(
                 imageURL: travel.travel_image,
                 titleText: travel.title,
                 descriptionText: travel.description,
@@ -45,12 +45,9 @@ class TravelInfoTableViewController: UITableViewController {
                 save: travel.save,
                 like: travel.like
             )
-            
-            return cell
         }
-        else {   
-            return UITableViewCell()
-        }
+        
+        return cell ?? UITableViewCell()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -59,5 +56,3 @@ class TravelInfoTableViewController: UITableViewController {
         cell.travel!.grade = CGFloat(Int.random(in: 0...5))
     }
 }
-
-

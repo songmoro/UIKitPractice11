@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class TravelInfoCell: UITableViewCell, HasIdentifier {
+class TravelInfoCell: CustomCell {
     static let identifier = "travelInfoCell"
     
     struct Input {

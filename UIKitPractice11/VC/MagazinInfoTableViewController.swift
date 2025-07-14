@@ -35,24 +35,19 @@ class MagazinInfoTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let magazine = magazineInfo.magazine[indexPath.row]
+        let cell = tableView.dequeueCustomCell(of: magazine.cell, for: indexPath)
         
-        if let cell = tableView.dequeueCustomCell(
-            of: MagazineInfoTableViewCell.self,
-            for: indexPath
-        ), let cellDate = modelDateToCellDate(magazine.date) {
-            
-            cell.input = MagazineInfoTableViewCell.Input(
+        if cell is MagazineInfoTableViewCell, let cellDate = modelDateToCellDate(magazine.date) {
+            let magazineInfoCell = cell as! MagazineInfoTableViewCell
+            magazineInfoCell.input = MagazineInfoTableViewCell.Input(
                 imageURL: magazine.photo_image,
                 titleText: magazine.title,
                 subtitleText: magazine.subtitle,
                 dateText: cellDate
             )
-            
-            return cell
         }
-        else {
-            return UITableViewCell()
-        }
+        
+        return cell ?? UITableViewCell()
     }
     
     func modelDateToCellDate(_ text: String) -> String? {

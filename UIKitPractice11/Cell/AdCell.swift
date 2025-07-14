@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AdCell: UITableViewCell, HasIdentifier {
+class AdCell: CustomCell {
     static let identifier = "adCell"
     
     // TODO: 인풋 프로토콜 선언
