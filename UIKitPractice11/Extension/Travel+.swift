@@ -6,7 +6,7 @@
 //
 
 extension Travel {
-    var cell: CustomCell.Type {
+    var cell: any CustomCell.Type {
         if ad != nil, ad! {
             AdCell.self
         }

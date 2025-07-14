@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct DateFormatManager {
-    static let shared: Self = DateFormatManager()
+class DateFormatManager {
+    static let shared: DateFormatManager = DateFormatManager()
     
     private init() { }
     

@@ -6,7 +6,7 @@
 //
 
 extension Magazine {
-    var cell: CustomCell.Type {
+    var cell: any CustomCell.Type {
         MagazineInfoTableViewCell.self
     }
 }

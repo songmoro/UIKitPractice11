@@ -9,11 +9,11 @@ import UIKit
 
 typealias CustomCell = UITableViewCell & HasIdentifier & HasModel
 
-protocol HasIdentifier: AnyObject {
+protocol HasIdentifier where Self: UITableViewCell {
     static var identifier: String { get }
 }
 
-protocol HasModel: AnyObject {
+protocol HasModel where Self: UITableViewCell {
     associatedtype Input
     associatedtype Model
     
