@@ -7,8 +7,15 @@
 
 import UIKit
 
-typealias CustomCell = UITableViewCell & HasIdentifier
+typealias CustomCell = UITableViewCell & HasIdentifier & HasModel
 
 protocol HasIdentifier: AnyObject {
     static var identifier: String { get }
+}
+
+protocol HasModel: AnyObject {
+    associatedtype Input
+    associatedtype Model
+    
+    func transform(_ input: Input)
 }

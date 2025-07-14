@@ -7,26 +7,33 @@
 
 import UIKit
 
+extension AdCell {
+    typealias Input = Travel
+    
+    struct Model {
+        let adText: String
+    }
+    
+    func transform(_ input: Input) {
+        model = Model(adText: input.title)
+    }
+}
+
 class AdCell: CustomCell {
     static let identifier = "adCell"
     
-    // TODO: 인풋 프로토콜 선언
     // TODO: 인풋 프로토콜 prepareForReuse
-    // TODO: 인풋 프로토콜 updateLabels()
     // TODO: prepareForReuse 초기 상태 누락 방지 방안
     // TODO: updateLabels()에서 조건 불만족시 기본 값으로 설정하는 방안
     
     @IBOutlet var backgroundShape: UIView!
     @IBOutlet var adLabelBackground: UIView!
     @IBOutlet var adTextLabel: UILabel!
-    var input: Input? {
+    
+    var model: Model? {
         didSet {
             updateLabels()
         }
-    }
-    
-    struct Input {
-        let adText: String
     }
     
     override func awakeFromNib() {
@@ -37,7 +44,7 @@ class AdCell: CustomCell {
     }
     
     func updateLabels() {
-        guard let input else { return }
-        adTextLabel.text = input.adText
+        guard let model else { return }
+        adTextLabel.text = model.adText
     }
 }

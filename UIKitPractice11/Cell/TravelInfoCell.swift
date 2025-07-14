@@ -8,10 +8,10 @@
 import UIKit
 import Kingfisher
 
-class TravelInfoCell: CustomCell {
-    static let identifier = "travelInfoCell"
+extension TravelInfoCell {
+    typealias Input = Travel
     
-    struct Input {
+    struct Model {
         let imageURL: String?
         let titleText: String
         let descriptionText: String?
@@ -20,6 +20,21 @@ class TravelInfoCell: CustomCell {
         var like: Bool?
     }
     
+    func transform(_ input: Input) {
+        model = Model(
+            imageURL: input.travel_image,
+            titleText: input.title,
+            descriptionText: input.description,
+            grade: input.grade,
+            save: input.save,
+            like: input.like
+        )
+    }
+}
+
+class TravelInfoCell: CustomCell {
+    static let identifier = "travelInfoCell"
+
     @IBOutlet var title: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var stars: [UIImageView]!
@@ -28,7 +43,7 @@ class TravelInfoCell: CustomCell {
     @IBOutlet var likeButton: UIButton!
     @IBOutlet var likeButtonBackground: UIButton!
     
-    var travel: Input? {
+    var model: Model? {
         didSet { updateLabels() }
     }
     
@@ -38,16 +53,16 @@ class TravelInfoCell: CustomCell {
     }
     
     override func prepareForReuse() {
-        travel = nil
+        model = nil
     }
     
     @IBAction func likeButtonTapped(_ sender: UIButton) {
-        guard travel != nil else { return }
-        travel!.like?.toggle()
+        guard model != nil else { return }
+        model!.like?.toggle()
     }
     
     func updateLabels() {
-        guard let travel else {
+        guard let model else {
             travel_image.image = nil
             title.text = ""
             descriptionLabel.text = ""
@@ -57,26 +72,26 @@ class TravelInfoCell: CustomCell {
             return
         }
         
-        if let imageURL = travel.imageURL, let url = URL(string: imageURL) {
+        if let imageURL = model.imageURL, let url = URL(string: imageURL) {
             travel_image.kf.setImage(
                 with: url,
                 placeholder: UIImage(systemName: "arrow.circlepath")
             )
         }
         
-        title.text = travel.titleText
+        title.text = model.titleText
         
-        if let descriptionText = travel.descriptionText {
+        if let descriptionText = model.descriptionText {
             descriptionLabel.text = descriptionText
         }
         
-        guard let grade = travel.grade,
-              let like = travel.like else { return }
+        guard let grade = model.grade,
+              let like = model.like else { return }
         var gradeAndSaveText = "(\(grade))"
         updateStars(to: Int(grade))
         updateLike(to: like)
         
-        if let save = travel.save {
+        if let save = model.save {
             gradeAndSaveText.append("∙저장 \((save + (like ? 1 : 0)).formatted(.number))")
         }
         

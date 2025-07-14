@@ -30,21 +30,11 @@ class TravelInfoTableViewController: UITableViewController {
         let travel = travelInfo.travel[indexPath.row]
         let cell = tableView.dequeueCustomCell(of: travel.cell, for: indexPath)
         
-        if travel.cell is AdCell.Type {
-            let adCell = cell as! AdCell
-            adCell.input = AdCell.Input(adText: travel.title)
+        if cell is AdCell {
+            (cell as! AdCell).transform(travel)
         }
-        else if travel.cell is TravelInfoCell.Type {
-            let travelInfoCell = cell as! TravelInfoCell
-            
-            travelInfoCell.travel = TravelInfoCell.Input(
-                imageURL: travel.travel_image,
-                titleText: travel.title,
-                descriptionText: travel.description,
-                grade: travel.grade,
-                save: travel.save,
-                like: travel.like
-            )
+        else if cell is TravelInfoCell {
+            (cell as! TravelInfoCell).transform(travel)
         }
         
         return cell ?? UITableViewCell()
@@ -52,7 +42,7 @@ class TravelInfoTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? TravelInfoCell else { return }
-        guard cell.travel != nil else { return }
-        cell.travel!.grade = CGFloat(Int.random(in: 0...5))
+        guard cell.model != nil else { return }
+        cell.model!.grade = CGFloat(Int.random(in: 0...5))
     }
 }

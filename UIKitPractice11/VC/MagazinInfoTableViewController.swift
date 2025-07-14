@@ -7,22 +7,10 @@
 
 import UIKit
 
-class MagazinInfoTableViewController: UITableViewController {
-    let dateToStringFomatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyMMdd"
-        return dateFormatter
-    }()
-    let stringToDateFomatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yy년 MM월 dd일"
-        return dateFormatter
-    }()
-    
+class MagazinInfoTableViewController: UITableViewController {    
     let magazineInfo = MagazineInfo()
     
     // TODO: 데이트 포매터 다른 방법
-    // TODO: 셀 타입 캐스팅 가독성 향상시키기
     
     override func viewDidLoad() {
         print(#file, #function)
@@ -37,23 +25,10 @@ class MagazinInfoTableViewController: UITableViewController {
         let magazine = magazineInfo.magazine[indexPath.row]
         let cell = tableView.dequeueCustomCell(of: magazine.cell, for: indexPath)
         
-        if cell is MagazineInfoTableViewCell, let cellDate = modelDateToCellDate(magazine.date) {
-            let magazineInfoCell = cell as! MagazineInfoTableViewCell
-            magazineInfoCell.input = MagazineInfoTableViewCell.Input(
-                imageURL: magazine.photo_image,
-                titleText: magazine.title,
-                subtitleText: magazine.subtitle,
-                dateText: cellDate
-            )
+        if cell is MagazineInfoTableViewCell {
+            (cell as! MagazineInfoTableViewCell).transform(magazine)
         }
         
         return cell ?? UITableViewCell()
-    }
-    
-    func modelDateToCellDate(_ text: String) -> String? {
-        let formattedDate = dateToStringFomatter.date(from: text)
-        guard let formattedDate else { return nil }
-            
-        return stringToDateFomatter.string(from: formattedDate)
     }
 }
