@@ -62,12 +62,17 @@ class MagazineInfoTableViewCell: CustomCell {
         model = nil
     }
     
+    // MARK: Function
+    func initial() {
+        photo_image.image = nil
+        title.text = ""
+        subtitle.text = ""
+        date.text = ""
+    }
+    
     func updateLabels() {
         guard let model else {
-            photo_image.image = nil
-            title.text = ""
-            subtitle.text = ""
-            date.text = ""
+            initial()
             return
         }
         

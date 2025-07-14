@@ -43,8 +43,19 @@ class AdCell: CustomCell {
         adLabelBackground.layer.cornerRadius = 8
     }
     
+    override func prepareForReuse() {
+        model = nil
+    }
+    
+    func initial() {
+        adTextLabel.text = ""
+    }
+    
     func updateLabels() {
-        guard let model else { return }
+        guard let model else {
+            initial()
+            return
+        }
         adTextLabel.text = model.adText
     }
 }

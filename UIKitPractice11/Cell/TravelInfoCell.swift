@@ -61,14 +61,19 @@ class TravelInfoCell: CustomCell {
         model!.like?.toggle()
     }
     
+    // MARK: Function
+    func initial() {
+        travel_image.image = nil
+        title.text = ""
+        descriptionLabel.text = ""
+        gradeAndSaveLabel.text = ""
+        updateStars(to: 0)
+        updateLike(to: false)
+    }
+    
     func updateLabels() {
         guard let model else {
-            travel_image.image = nil
-            title.text = ""
-            descriptionLabel.text = ""
-            gradeAndSaveLabel.text = ""
-            updateStars(to: 0)
-            updateLike(to: false)
+            initial()
             return
         }
         
