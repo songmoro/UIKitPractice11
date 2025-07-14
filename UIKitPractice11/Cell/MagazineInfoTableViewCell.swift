@@ -31,17 +31,6 @@ extension MagazineInfoTableViewCell {
 class MagazineInfoTableViewCell: CustomCell {
     static let identifier = "magazineInfoTableViewCell"
     
-    static let dateToStringFomatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyMMdd"
-        return dateFormatter
-    }()
-    static let stringToDateFomatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yy년 MM월 dd일"
-        return dateFormatter
-    }()
-    
     @IBOutlet var photo_image: UIImageView!
     @IBOutlet var title: UILabel!
     @IBOutlet var subtitle: UILabel!
@@ -88,9 +77,9 @@ class MagazineInfoTableViewCell: CustomCell {
     }
     
     func modelDateToCellDate(_ text: String) -> String? {
-        let formattedDate = MagazineInfoTableViewCell.dateToStringFomatter.date(from: text)
+        let formattedDate = DateFormatManager.shared.dateToStringFomatter.date(from: text)
         guard let formattedDate else { return nil }
             
-        return MagazineInfoTableViewCell.stringToDateFomatter.string(from: formattedDate)
+        return DateFormatManager.shared.stringToDateFomatter.string(from: formattedDate)
     }
 }

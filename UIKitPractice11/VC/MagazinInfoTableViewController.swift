@@ -10,8 +10,6 @@ import UIKit
 class MagazinInfoTableViewController: UITableViewController {    
     let magazineInfo = MagazineInfo()
     
-    // TODO: 데이트 포매터 다른 방법
-    
     override func viewDidLoad() {
         print(#file, #function)
         super.viewDidLoad()
