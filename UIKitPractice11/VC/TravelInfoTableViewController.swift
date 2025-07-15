@@ -12,7 +12,6 @@ class TravelInfoTableViewController: UITableViewController {
     
     // TODO: 메모리 절약
     // TODO: kingfisher placeholder size
-    // TODO: variable arguments text label clear
     
     override func viewDidLoad() {
         print(#file, #function)
