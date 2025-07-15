@@ -18,6 +18,7 @@ class TravelInfoTableViewController: UITableViewController {
         print(#file, #function)
         super.viewDidLoad()
         
+        navigationItem.backButtonTitle = ""
         tableView.register(UINib(nibName: AdCell.identifier, bundle: nil), forCellReuseIdentifier: AdCell.identifier)
         tableView.register(UINib(nibName: TravelInfoCell.identifier, bundle: nil), forCellReuseIdentifier: TravelInfoCell.identifier)
     }
@@ -51,7 +52,10 @@ class TravelInfoTableViewController: UITableViewController {
             
             present(nav, animated: true)
         case is TravelInfoCell:
-            break
+            let vc = storyboard.instantiateViewController(withIdentifier: "TravelDetailViewController") as! TravelDetailViewController
+            vc.put(travel)
+            
+            navigationController?.pushViewController(vc, animated: true)
         default:
             break
         }

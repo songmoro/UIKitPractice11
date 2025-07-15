@@ -61,6 +61,69 @@
             </objects>
             <point key="canvasLocation" x="-479" y="593"/>
         </scene>
+        <!--관광지 화면-->
+        <scene sceneID="8vJ-bY-oJH">
+            <objects>
+                <viewController storyboardIdentifier="TravelDetailViewController" id="Ltk-u8-2V0" customClass="TravelDetailViewController" customModule="UIKitPractice11" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BJO-H1-iwD">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hgt-Iq-mSZ">
+                                <rect key="frame" x="44" y="206" width="305" height="305"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="hgt-Iq-mSZ" secondAttribute="height" multiplier="1:1" id="Q69-eS-BDb"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SPB-ar-AKc">
+                                <rect key="frame" x="44" y="571" width="305" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uG3-e7-QSA">
+                                <rect key="frame" x="111.66666666666669" y="617" width="170" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="다른 관광지 보러 가기"/>
+                                <connections>
+                                    <action selector="dismissButtonTapped:" destination="Ltk-u8-2V0" eventType="touchUpInside" id="RVh-dZ-928"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VkY-nP-tgV">
+                                <rect key="frame" x="44" y="521" width="305" height="40"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="33"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="sII-M3-QLJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="VkY-nP-tgV" firstAttribute="top" secondItem="hgt-Iq-mSZ" secondAttribute="bottom" constant="10" id="3bW-6q-XJq"/>
+                            <constraint firstItem="sII-M3-QLJ" firstAttribute="trailing" secondItem="hgt-Iq-mSZ" secondAttribute="trailing" constant="44" id="4oy-hX-NkT"/>
+                            <constraint firstItem="SPB-ar-AKc" firstAttribute="top" secondItem="VkY-nP-tgV" secondAttribute="bottom" constant="10" id="7er-Jp-CBV"/>
+                            <constraint firstItem="hgt-Iq-mSZ" firstAttribute="top" secondItem="sII-M3-QLJ" secondAttribute="top" constant="44" id="8Yt-kO-hBl"/>
+                            <constraint firstItem="hgt-Iq-mSZ" firstAttribute="leading" secondItem="sII-M3-QLJ" secondAttribute="leading" constant="44" id="CJs-Av-bq3"/>
+                            <constraint firstItem="uG3-e7-QSA" firstAttribute="centerX" secondItem="SPB-ar-AKc" secondAttribute="centerX" id="Pcl-iE-mK8"/>
+                            <constraint firstItem="SPB-ar-AKc" firstAttribute="width" secondItem="VkY-nP-tgV" secondAttribute="width" id="QBT-TD-Ixd"/>
+                            <constraint firstItem="uG3-e7-QSA" firstAttribute="top" secondItem="SPB-ar-AKc" secondAttribute="bottom" constant="10" id="RG2-ut-8re"/>
+                            <constraint firstItem="VkY-nP-tgV" firstAttribute="centerX" secondItem="hgt-Iq-mSZ" secondAttribute="centerX" id="gxM-Xn-tuj"/>
+                            <constraint firstItem="VkY-nP-tgV" firstAttribute="width" secondItem="hgt-Iq-mSZ" secondAttribute="width" id="itN-Hn-cko"/>
+                            <constraint firstItem="SPB-ar-AKc" firstAttribute="centerX" secondItem="VkY-nP-tgV" secondAttribute="centerX" id="jbu-TH-Hmt"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="관광지 화면" id="SMk-We-AU2"/>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="SPB-ar-AKc" id="ao1-i0-lr0"/>
+                        <outlet property="dismissButton" destination="uG3-e7-QSA" id="Mxg-c4-Gqy"/>
+                        <outlet property="titleLabel" destination="VkY-nP-tgV" id="hGq-WT-VUZ"/>
+                        <outlet property="travelImage" destination="hgt-Iq-mSZ" id="ARm-Tg-OqY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n6J-Oq-XK5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="300" y="1353"/>
+        </scene>
         <!--광고 화면-->
         <scene sceneID="CRy-jH-tKE">
             <objects>
@@ -99,6 +162,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wuJ-Te-Hzs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="300" y="593"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="sz0-KH-g4T">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="adl-oi-usL" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8Ij-F0-2cM">
+                        <rect key="frame" x="0.0" y="118" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ltk-u8-2V0" kind="relationship" relationship="rootViewController" id="7yZ-VU-JCK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LIo-aK-3gl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-480" y="1353"/>
         </scene>
     </scenes>
     <resources>
