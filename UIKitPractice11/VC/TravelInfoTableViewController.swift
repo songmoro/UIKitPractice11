@@ -54,7 +54,7 @@ class TravelInfoTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch travelInfo.travel[indexPath.row].ad {
-        case .some(true): 80
+        case true: 80
         default: UITableView.automaticDimension
         }
     }
