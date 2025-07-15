@@ -20,8 +20,6 @@ extension AdCell {
 }
 
 class AdCell: CustomCell {
-    static let identifier = String(describing: AdCell.self)
-    
     // TODO: 인풋 프로토콜 prepareForReuse
     // TODO: prepareForReuse 초기 상태 누락 방지 방안
     

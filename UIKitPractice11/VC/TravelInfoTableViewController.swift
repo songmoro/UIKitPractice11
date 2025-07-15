@@ -11,8 +11,6 @@ class TravelInfoTableViewController: UITableViewController {
     let travelInfo = TravelInfo()
     
     // TODO: 메모리 절약
-    // TODO: UITableView + Custom Cell Register 
-    // TODO: UITableViewController Cell -> Xib Cell
     // TODO: kingfisher placeholder size
     // TODO: variable arguments text label clear
     

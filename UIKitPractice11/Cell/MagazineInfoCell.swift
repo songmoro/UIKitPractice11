@@ -29,7 +29,6 @@ extension MagazineInfoCell {
 }
 
 class MagazineInfoCell: CustomCell {
-    static let identifier = String(describing: MagazineInfoCell.self)
     static let dateFormatter = DateFormatManager()
     
     @IBOutlet var photo_image: UIImageView!
