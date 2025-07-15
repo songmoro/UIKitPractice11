@@ -30,6 +30,7 @@ extension MagazineInfoTableViewCell {
 
 class MagazineInfoTableViewCell: CustomCell {
     static let identifier = "magazineInfoTableViewCell"
+    static let dateFormatter = DateFormatManager()
     
     @IBOutlet var photo_image: UIImageView!
     @IBOutlet var title: UILabel!
@@ -89,9 +90,9 @@ class MagazineInfoTableViewCell: CustomCell {
     }
     
     func modelDateToCellDate(_ text: String) -> String? {
-        let formattedDate = DateFormatManager.shared.dateToStringFomatter.date(from: text)
+        let formattedDate = Self.dateFormatter.getStringFrom.date(from: text)
         guard let formattedDate else { return nil }
             
-        return DateFormatManager.shared.stringToDateFomatter.string(from: formattedDate)
+        return Self.dateFormatter.getDateFrom.string(from: formattedDate)
     }
 }

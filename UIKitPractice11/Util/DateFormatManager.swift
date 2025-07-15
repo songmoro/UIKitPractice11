@@ -8,16 +8,12 @@
 import Foundation
 
 class DateFormatManager {
-    static let shared: DateFormatManager = DateFormatManager()
-    
-    private init() { }
-    
-    let dateToStringFomatter: DateFormatter = {
+    let getStringFrom: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyMMdd"
         return dateFormatter
     }()
-    let stringToDateFomatter: DateFormatter = {
+    let getDateFrom: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yy년 MM월 dd일"
         return dateFormatter
