@@ -20,7 +20,7 @@ extension AdCell {
 }
 
 class AdCell: CustomCell {
-    static let identifier = "adCell"
+    static let identifier = String(describing: AdCell.self)
     
     // TODO: 인풋 프로토콜 prepareForReuse
     // TODO: prepareForReuse 초기 상태 누락 방지 방안
@@ -37,7 +37,6 @@ class AdCell: CustomCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         backgroundShape.layer.cornerRadius = 12
         adLabelBackground.layer.cornerRadius = 8
     }

@@ -14,10 +14,13 @@ class TravelInfoTableViewController: UITableViewController {
     // TODO: UITableView + Custom Cell Register 
     // TODO: UITableViewController Cell -> Xib Cell
     // TODO: kingfisher placeholder size
+    // TODO: variable arguments text label clear
     
     override func viewDidLoad() {
         print(#file, #function)
         super.viewDidLoad()
+        
+        tableView.register(UINib(nibName: AdCell.identifier, bundle: nil), forCellReuseIdentifier: AdCell.identifier)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -28,14 +31,17 @@ class TravelInfoTableViewController: UITableViewController {
         let travel = travelInfo.travel[indexPath.row]
         let cell = tableView.dequeueCustomCell(of: travel.cell, for: indexPath)
         
-        switch cell {
-        case let adCell as AdCell:
-            adCell.put(travel)
-        case let travelCell as TravelInfoCell:
-            travelCell.put(travel)
-        default:
-            break
-        }
+        (cell as? AdCell)?.put(travel)
+        (cell as? TravelInfoCell)?.put(travel)
+        
+//        switch cell {
+//        case let adCell as AdCell:
+//            adCell.put(travel)
+//        case let travelCell as TravelInfoCell:
+//            travelCell.put(travel)
+//        default:
+//            break
+//        }
         
         return cell ?? UITableViewCell()
     }
@@ -44,5 +50,12 @@ class TravelInfoTableViewController: UITableViewController {
         guard let cell = tableView.cellForRow(at: indexPath) as? TravelInfoCell else { return }
         guard cell.model != nil else { return }
         cell.model!.grade = CGFloat(Int.random(in: 0...5))
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch travelInfo.travel[indexPath.row].ad {
+        case .some(true): 80
+        default: UITableView.automaticDimension
+        }
     }
 }
