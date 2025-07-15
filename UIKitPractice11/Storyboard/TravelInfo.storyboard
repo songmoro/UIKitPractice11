@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -44,10 +45,66 @@
             </objects>
             <point key="canvasLocation" x="176.33587786259542" y="-317.6056338028169"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1gY-e2-CF6">
+            <objects>
+                <navigationController id="rg9-x9-pWL" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jbA-j8-Fz7">
+                        <rect key="frame" x="0.0" y="118" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="mtE-CT-DtV" kind="relationship" relationship="rootViewController" id="Wue-Sx-7ct"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wUy-Gc-JTe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-479" y="593"/>
+        </scene>
+        <!--광고 화면-->
+        <scene sceneID="CRy-jH-tKE">
+            <objects>
+                <viewController storyboardIdentifier="AdViewController" id="mtE-CT-DtV" customClass="AdViewController" customModule="UIKitPractice11" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Peq-8A-LFT">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qRe-h4-FEk">
+                                <rect key="frame" x="44" y="206" width="305" height="534"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="kF8-ms-wgB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qRe-h4-FEk" firstAttribute="top" secondItem="kF8-ms-wgB" secondAttribute="top" constant="44" id="Bw6-bn-0y2"/>
+                            <constraint firstItem="kF8-ms-wgB" firstAttribute="bottom" secondItem="qRe-h4-FEk" secondAttribute="bottom" constant="44" id="Vey-i3-iZz"/>
+                            <constraint firstItem="qRe-h4-FEk" firstAttribute="leading" secondItem="kF8-ms-wgB" secondAttribute="leading" constant="44" id="oUK-G2-vxk"/>
+                            <constraint firstItem="kF8-ms-wgB" firstAttribute="trailing" secondItem="qRe-h4-FEk" secondAttribute="trailing" constant="44" id="oim-1J-4C9"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="광고 화면" id="aY2-Fh-WRe">
+                        <barButtonItem key="leftBarButtonItem" image="xmark" catalog="system" id="fFE-Oc-GUx">
+                            <connections>
+                                <action selector="dismissTapped:" destination="mtE-CT-DtV" id="qNy-dZ-fj0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="adLabel" destination="qRe-h4-FEk" id="CxU-Nu-kuV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wuJ-Te-Hzs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="300" y="593"/>
+        </scene>
     </scenes>
     <resources>
         <image name="car.rear.tilt.road.lanes.curved.right" catalog="system" width="128" height="74"/>
         <image name="road.lanes.curved.right" catalog="system" width="128" height="74"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -37,9 +37,24 @@ class TravelInfoTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? TravelInfoCell else { return }
-        guard cell.model != nil else { return }
-        cell.model!.grade = CGFloat(Int.random(in: 0...5))
+        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        let travel = travelInfo.travel[indexPath.row]
+        let storyboard = UIStoryboard(name: "TravelInfo", bundle: nil)
+        
+        switch cell {
+        case is AdCell:
+            let vc = storyboard.instantiateViewController(withIdentifier: "AdViewController") as! AdViewController
+            vc.put(travel)
+            
+            let nav = UINavigationController(rootViewController: vc)
+            nav.modalPresentationStyle = .fullScreen
+            
+            present(nav, animated: true)
+        case is TravelInfoCell:
+            break
+        default:
+            break
+        }
     }
       
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

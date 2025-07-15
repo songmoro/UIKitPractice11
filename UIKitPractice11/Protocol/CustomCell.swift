@@ -8,20 +8,3 @@
 import UIKit
 
 typealias CustomCell = UITableViewCell & HasIdentifier & HasModel
-
-protocol HasIdentifier where Self: UITableViewCell {
-    static var identifier: String { get }
-}
-
-extension HasIdentifier {
-    static var identifier: String {
-        String(describing: Self.self)
-    }
-}
-
-protocol HasModel where Self: UITableViewCell {
-    associatedtype Input
-    associatedtype Model
-    
-    func put(_ input: Input)
-}
