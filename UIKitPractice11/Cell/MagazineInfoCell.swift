@@ -53,10 +53,8 @@ class MagazineInfoCell: CustomCell {
     
     // MARK: Function
     func initial() {
-        photo_image.image = nil
-        title.text = ""
-        subtitle.text = ""
-        date.text = ""
+        resetImages(photo_image)
+        resetLabels(title, subtitle, date)
     }
     
     func updateLabels() {

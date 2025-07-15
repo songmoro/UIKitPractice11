@@ -63,10 +63,9 @@ class TravelInfoCell: CustomCell {
     
     // MARK: Function
     func initial() {
-        travel_image.image = nil
-        title.text = ""
-        descriptionLabel.text = ""
-        gradeAndSaveLabel.text = ""
+        resetImages(travel_image)
+        resetLabels(title, descriptionLabel, gradeAndSaveLabel)
+        
         updateStars(to: 0)
         updateLike(to: false)
     }

@@ -44,7 +44,7 @@ class AdCell: CustomCell {
     }
     
     func initial() {
-        adTextLabel.text = ""
+        resetLabels(adTextLabel)
     }
     
     func updateLabels() {
