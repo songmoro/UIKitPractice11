@@ -16,7 +16,7 @@ extension AdViewController {
     }
 }
 
-class AdViewController: UIViewController, HasModel {
+class AdViewController: UIViewController, HasIdentifier, HasModel {
     @IBOutlet var adLabel: UILabel!
     
     var model: Model? {

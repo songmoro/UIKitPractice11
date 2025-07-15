@@ -49,7 +49,7 @@ class TravelInfoCell: CustomCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        travel_image.layer.cornerRadius = 12
+        travel_image.setCornerRadius(to: 12)
     }
     
     override func prepareForReuse() {

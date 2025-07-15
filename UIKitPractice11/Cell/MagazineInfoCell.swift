@@ -44,7 +44,7 @@ class MagazineInfoCell: CustomCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        photo_image.layer.cornerRadius = 12
+        photo_image.setCornerRadius(to: 12)
     }
     
     override func prepareForReuse() {

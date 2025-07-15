@@ -35,8 +35,8 @@ class AdCell: CustomCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        backgroundShape.layer.cornerRadius = 12
-        adLabelBackground.layer.cornerRadius = 8
+        backgroundShape.setCornerRadius(to: 12)
+        adLabelBackground.setCornerRadius(to: 8)
     }
     
     override func prepareForReuse() {

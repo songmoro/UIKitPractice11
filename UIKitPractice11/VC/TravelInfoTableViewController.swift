@@ -44,7 +44,7 @@ class TravelInfoTableViewController: UITableViewController {
         
         switch cell {
         case is AdCell:
-            let vc = storyboard.instantiateViewController(withIdentifier: "AdViewController") as! AdViewController
+            let vc = storyboard.instantiateViewController(withIdentifier: AdViewController.identifier) as! AdViewController
             vc.put(travel)
             
             let nav = UINavigationController(rootViewController: vc)
@@ -52,7 +52,7 @@ class TravelInfoTableViewController: UITableViewController {
             
             present(nav, animated: true)
         case is TravelInfoCell:
-            let vc = storyboard.instantiateViewController(withIdentifier: "TravelDetailViewController") as! TravelDetailViewController
+            let vc = storyboard.instantiateViewController(withIdentifier: TravelDetailViewController.identifier) as! TravelDetailViewController
             vc.put(travel)
             
             navigationController?.pushViewController(vc, animated: true)

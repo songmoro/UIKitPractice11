@@ -26,7 +26,7 @@ extension TravelDetailViewController {
     }
 }
 
-class TravelDetailViewController: UIViewController, HasModel {
+class TravelDetailViewController: UIViewController, HasIdentifier, HasModel {
     @IBOutlet var travelImage: UIImageView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
@@ -41,9 +41,15 @@ class TravelDetailViewController: UIViewController, HasModel {
     }
     
     // TODO: 모델 init throw
+    // TODO: 이미지 재사용
+    // TODO: IBOutlet -> Tag
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        travelImage.setCornerRadius(to: 12)
+        
+        dismissButton.layer.masksToBounds = true
+        dismissButton.setCornerRadius(to: 18)
         updateLabels()
     }
     
