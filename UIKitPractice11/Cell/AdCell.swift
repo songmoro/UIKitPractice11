@@ -22,6 +22,7 @@ extension AdCell {
 class AdCell: CustomCell {
     // TODO: 인풋 프로토콜 prepareForReuse
     // TODO: prepareForReuse 초기 상태 누락 방지 방안
+    // TODO: 옵션 셋 UIView 모디파이어
     
     @IBOutlet var backgroundShape: UIView!
     @IBOutlet var adLabelBackground: UIView!
