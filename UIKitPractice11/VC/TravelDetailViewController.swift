@@ -59,13 +59,25 @@ class TravelDetailViewController: UIViewController, HasIdentifier, HasModel {
     
     func updateLabels() {
         guard let model else { return }
-        if let url = URL(string: model.imageURL) {
-            travelImage.kf.setImage(
-                with: url,
-                placeholder: UIImage(systemName: "arrow.circlepath")
-            )
-        }
-        titleLabel.text = model.title
-        descriptionLabel.text = model.description
+        updateImage(model.imageURL)
+        updateTitle(model.title)
+        updateDescription(model.description)
+    }
+    
+    func updateImage(_ url: String) {
+        guard let url = URL(string: url) else { return }
+        
+        travelImage.kf.setImage(
+            with: url,
+            placeholder: UIImage(systemName: "arrow.circlepath")
+        )
+    }
+    
+    func updateTitle(_ text: String) {
+        titleLabel.text = text
+    }
+    
+    func updateDescription(_ text: String) {
+        descriptionLabel.text = text
     }
 }
