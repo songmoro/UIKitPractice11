@@ -41,6 +41,7 @@ class AdCell: CustomCell {
     }
     
     override func prepareForReuse() {
+        super.prepareForReuse()
         model = nil
     }
     
