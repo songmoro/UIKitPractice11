@@ -11,11 +11,10 @@ class MagazinInfoTableViewController: UITableViewController {
     let magazineInfo = MagazineInfo()
     
     override func viewDidLoad() {
-        print(#file, #function)
         super.viewDidLoad()
         
         tableView.rowHeight = 450
-        tableView.register(UINib(nibName: MagazineInfoCell.identifier, bundle: nil), forCellReuseIdentifier: MagazineInfoCell.identifier)
+        tableView.register(of: MagazineInfoCell.self)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

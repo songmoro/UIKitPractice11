@@ -14,12 +14,12 @@ class TravelInfoTableViewController: UITableViewController {
     // TODO: kingfisher placeholder size
     
     override func viewDidLoad() {
-        print(#file, #function)
         super.viewDidLoad()
         
         navigationItem.backButtonTitle = ""
-        tableView.register(UINib(nibName: AdCell.identifier, bundle: nil), forCellReuseIdentifier: AdCell.identifier)
-        tableView.register(UINib(nibName: TravelInfoCell.identifier, bundle: nil), forCellReuseIdentifier: TravelInfoCell.identifier)
+        
+        tableView.register(of: AdCell.self)
+        tableView.register(of: TravelInfoCell.self)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
