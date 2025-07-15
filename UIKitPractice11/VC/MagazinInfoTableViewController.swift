@@ -13,6 +13,9 @@ class MagazinInfoTableViewController: UITableViewController {
     override func viewDidLoad() {
         print(#file, #function)
         super.viewDidLoad()
+        
+        tableView.rowHeight = 450
+        tableView.register(UINib(nibName: MagazineInfoCell.identifier, bundle: nil), forCellReuseIdentifier: MagazineInfoCell.identifier)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -23,12 +26,7 @@ class MagazinInfoTableViewController: UITableViewController {
         let magazine = magazineInfo.magazine[indexPath.row]
         let cell = tableView.dequeueCustomCell(of: magazine.cell, for: indexPath)
         
-        switch cell {
-        case let magazineCell as MagazineInfoTableViewCell:
-            magazineCell.put(magazine)
-        default:
-            break
-        }
+        (cell as? MagazineInfoCell)?.put(magazine)
         
         return cell ?? UITableViewCell()
     }

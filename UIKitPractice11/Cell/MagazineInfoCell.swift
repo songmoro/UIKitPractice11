@@ -1,5 +1,5 @@
 //
-//  MagazineInfoTableViewCell.swift
+//  MagazineInfoCell.swift
 //  UIKitPractice11
 //
 //  Created by 송재훈 on 7/11/25.
@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-extension MagazineInfoTableViewCell {
+extension MagazineInfoCell {
     typealias Input = Magazine
     
     func put(_ input: Input) {
@@ -28,8 +28,8 @@ extension MagazineInfoTableViewCell {
     }
 }
 
-class MagazineInfoTableViewCell: CustomCell {
-    static let identifier = "magazineInfoTableViewCell"
+class MagazineInfoCell: CustomCell {
+    static let identifier = String(describing: MagazineInfoCell.self)
     static let dateFormatter = DateFormatManager()
     
     @IBOutlet var photo_image: UIImageView!
