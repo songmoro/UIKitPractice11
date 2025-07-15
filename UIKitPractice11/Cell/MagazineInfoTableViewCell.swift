@@ -65,15 +65,27 @@ class MagazineInfoTableViewCell: CustomCell {
             return
         }
         
-        if let url = URL(string: model.imageURL) {
-            photo_image.kf.setImage(
-                with: url,
-                placeholder: UIImage(systemName: "arrow.circlepath")
-            )
-        }
-        title.text = model.titleText
-        subtitle.text = model.subtitleText
-        date.text = model.dateText
+        updateImage(model.imageURL)
+        updateTitle(model.titleText)
+        updateSubtitle(model.subtitleText)
+        updateDate(model.dateText)
+    }
+    
+    func updateImage(_ url: String) {
+        guard let url = URL(string: url) else { return }
+        photo_image.kf.setImage(with: url, placeholder: UIImage(systemName: "arrow.circlepath"))
+    }
+    
+    func updateTitle(_ text: String) {
+        title.text = text
+    }
+    
+    func updateSubtitle(_ text: String) {
+        subtitle.text = text
+    }
+    
+    func updateDate(_ text: String) {
+        date.text = text
     }
     
     func modelDateToCellDate(_ text: String) -> String? {

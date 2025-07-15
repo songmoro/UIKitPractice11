@@ -44,7 +44,9 @@ class TravelInfoCell: CustomCell {
     @IBOutlet var likeButtonBackground: UIButton!
     
     var model: Model? {
-        didSet { updateLabels() }
+        didSet {
+            updateLabels()
+        }
     }
     
     override func awakeFromNib() {
@@ -77,28 +79,33 @@ class TravelInfoCell: CustomCell {
             return
         }
         
-        if let imageURL = model.imageURL, let url = URL(string: imageURL) {
-            travel_image.kf.setImage(
-                with: url,
-                placeholder: UIImage(systemName: "arrow.circlepath")
-            )
-        }
+        updateImage(model.imageURL)
+        updateTitle(model.titleText)
+        updateDescription(model.descriptionText)
+        updateGradeAndSave(grade: model.grade, like: model.like, save: model.save)
+    }
+    
+    func updateImage(_ imageURL: String?) {
+        guard let imageURL, let url = URL(string: imageURL) else { return }
         
-        title.text = model.titleText
-        
-        if let descriptionText = model.descriptionText {
-            descriptionLabel.text = descriptionText
-        }
-        
-        guard let grade = model.grade,
-              let like = model.like else { return }
-        var gradeAndSaveText = "(\(grade))"
+        travel_image.kf.setImage(with: url, placeholder: UIImage(systemName: "arrow.circlepath"))
+    }
+    
+    func updateTitle(_ text: String) {
+        title.text = text
+    }
+    
+    func updateDescription(_ text: String?) {
+        guard let descriptionText = text else { return }
+        descriptionLabel.text = descriptionText
+    }
+    
+    func updateGradeAndSave(grade: CGFloat?, like: Bool?, save: Int?) {
+        guard let grade, let like, let save else { return }
         updateStars(to: Int(grade))
         updateLike(to: like)
         
-        if let save = model.save {
-            gradeAndSaveText.append("∙저장 \((save + (like ? 1 : 0)).formatted(.number))")
-        }
+        let gradeAndSaveText = "(\(grade))∙저장 \((save + (like ? 1 : 0)).formatted(.number))"
         
         gradeAndSaveLabel.text = gradeAndSaveText
     }
