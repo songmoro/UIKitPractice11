@@ -21,6 +21,7 @@ class TravelInfoTableViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.register(UINib(nibName: AdCell.identifier, bundle: nil), forCellReuseIdentifier: AdCell.identifier)
+        tableView.register(UINib(nibName: TravelInfoCell.identifier, bundle: nil), forCellReuseIdentifier: TravelInfoCell.identifier)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -34,15 +35,6 @@ class TravelInfoTableViewController: UITableViewController {
         (cell as? AdCell)?.put(travel)
         (cell as? TravelInfoCell)?.put(travel)
         
-//        switch cell {
-//        case let adCell as AdCell:
-//            adCell.put(travel)
-//        case let travelCell as TravelInfoCell:
-//            travelCell.put(travel)
-//        default:
-//            break
-//        }
-        
         return cell ?? UITableViewCell()
     }
     
@@ -51,11 +43,11 @@ class TravelInfoTableViewController: UITableViewController {
         guard cell.model != nil else { return }
         cell.model!.grade = CGFloat(Int.random(in: 0...5))
     }
-    
+      
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch travelInfo.travel[indexPath.row].ad {
         case true: 80
-        default: UITableView.automaticDimension
+        default: 150
         }
     }
 }

@@ -33,7 +33,7 @@ extension TravelInfoCell {
 }
 
 class TravelInfoCell: CustomCell {
-    static let identifier = "travelInfoCell"
+    static let identifier = String(describing: TravelInfoCell.self)
 
     @IBOutlet var title: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
