@@ -7,9 +7,11 @@
 
 import UIKit
 
+// TODO: 특정 상황에서 getCity() out of range 발생
 class CityInfoViewController: UIViewController {
     let cityInfo = CityInfo()
     var selectedCities: [City] = []
+    // TODO: 필터링한 데이터 보여줄 다른 방법
     var filteredCities: [City] = []
     
     @IBOutlet var searchBar: UISearchBar!
@@ -108,7 +110,7 @@ extension CityInfoViewController {
     }
     
     @objc func textFieldEditingChange(_ textField: UITextField) {
-        guard let text = textField.text?.lowercased(), !text.isEmpty || !text.allSatisfy(\.isWhitespace) else { return }
+        guard let text = textField.text?.lowercased(), !text.isEmpty else { return }
         
         // TODO: ㅂ ㅏ ㅇ ㅋ ㅗ ㄱ 같은 검색 성능 개선
         filteredCities = selectedCities.filter {
@@ -123,6 +125,6 @@ extension CityInfoViewController {
     @objc func textFieldDidEndEditing() {
         view.endEditing(true)
         
-        tableView.reloadData()
+//        tableView.reloadData()
     }
 }
