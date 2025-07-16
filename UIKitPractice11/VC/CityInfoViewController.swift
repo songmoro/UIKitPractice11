@@ -10,6 +10,7 @@ import UIKit
 class CityInfoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let cityInfo = CityInfo()
     var selectedCities: [City] = []
+    var filteredCities: [City] = []
     
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var segmentedControl: UISegmentedControl!
@@ -17,12 +18,16 @@ class CityInfoViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureSearchBar()
         configureTableView()
         configureSegmentedControl()
         
         didChangeSelectedSegment()
     }
-    
+}
+
+// MARK: TableView
+extension CityInfoViewController {
     func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -31,6 +36,43 @@ class CityInfoViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.register(of: CityInfoCell.self)
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchBar.searchTextField.isEditing {
+            return filteredCities.count
+        }
+        else {
+            return selectedCities.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueCustomCell(of: CityInfoCell.self, for: indexPath)
+        let city = getCity(indexPath)
+        cell?.put(city)
+        
+        return cell ?? UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: CityDetailViewController.identifier) as? CityDetailViewController else { return }
+        let city = getCity(indexPath)
+        vc.put(city)
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func getCity(_ indexPath: IndexPath) -> City {
+        if searchBar.searchTextField.isEditing {
+            filteredCities[indexPath.row]
+        }
+        else {
+            selectedCities[indexPath.row]
+        }
+    }
+}
+
+// MARK: SegmentedControl
+extension CityInfoViewController {
     func configureSegmentedControl() {
         segmentedControl.removeAllSegments()
         segmentedControl.addTarget(self, action: #selector(didChangeSelectedSegment), for: .valueChanged)
@@ -43,6 +85,8 @@ class CityInfoViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @objc func didChangeSelectedSegment() {
+        view.endEditing(true)
+        
         selectedCities = {
             return switch segmentedControl.selectedSegmentIndex {
             case 0: cityInfo.city
@@ -54,25 +98,29 @@ class CityInfoViewController: UIViewController, UITableViewDelegate, UITableView
         
         tableView.reloadData()
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        selectedCities.count
+}
+
+// MARK: SearchBar & TextField
+extension CityInfoViewController {
+    func configureSearchBar() {
+        searchBar.searchTextField.addTarget(self, action: #selector(textFieldDidEndEditing), for: .editingDidEndOnExit)
+        searchBar.searchTextField.addTarget(self, action: #selector(textFieldEditingChange), for: .editingChanged)
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueCustomCell(of: CityInfoCell.self, for: indexPath)
-        let city = selectedCities[indexPath.row]
-        cell?.put(city)
+    @objc func textFieldEditingChange(_ textField: UITextField) {
+        guard let text = textField.text, !text.isEmpty || !text.allSatisfy(\.isWhitespace) else { return }
         
-        return cell ?? UITableViewCell()
+        // TODO: 검색 성능 개선
+        filteredCities = selectedCities.filter {
+            $0.city_name.hasPrefix(text) ||
+            $0.lowerCasedCityEnglishName.hasPrefix(text) ||
+            $0.city_explain.hasPrefix(text)
+        }
+        
+        tableView.reloadData()
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: CityDetailViewController.identifier) as? CityDetailViewController else { return }
-        let city = selectedCities[indexPath.row]
-        
-        vc.put(city)
-        
-        navigationController?.pushViewController(vc, animated: true)
+    @objc func textFieldDidEndEditing() {
+        view.endEditing(true)
     }
 }
