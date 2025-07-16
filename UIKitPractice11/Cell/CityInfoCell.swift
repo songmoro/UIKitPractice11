@@ -35,6 +35,7 @@ class CityInfoCell: CustomCell {
 //    let city_image: String
 //    let domestic_travel: Bool
     
+    @IBOutlet var containerView: UIView!
     @IBOutlet var cityImage: UIImageView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var explainLabel: UILabel!
@@ -47,6 +48,10 @@ class CityInfoCell: CustomCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        containerView.layer.cornerRadius = 16
+        containerView.clipsToBounds = true
+        containerView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMinYCorner]
     }
     
     override func prepareForReuse() {
