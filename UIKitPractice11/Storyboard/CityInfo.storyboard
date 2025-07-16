@@ -33,10 +33,47 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FFw-R8-fda">
+                                <rect key="frame" x="24" y="269" width="345" height="466"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="7OC-1d-XW9">
+                                <rect key="frame" x="24" y="230" width="345" height="32"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="gcj-99-6oh">
+                                <rect key="frame" x="24" y="166" width="345" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="Rj4-fI-3fZ"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="FFw-R8-fda" firstAttribute="top" secondItem="7OC-1d-XW9" secondAttribute="bottom" constant="8" id="30a-Gs-Uyo"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="FFw-R8-fda" secondAttribute="trailing" constant="24" id="HCl-zU-JOB"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="7OC-1d-XW9" secondAttribute="trailing" constant="24" id="VGh-L7-ihM"/>
+                            <constraint firstAttribute="trailing" secondItem="gcj-99-6oh" secondAttribute="trailing" constant="24" id="XKf-Ve-zIG"/>
+                            <constraint firstItem="7OC-1d-XW9" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="e6Y-HB-ZCy"/>
+                            <constraint firstItem="FFw-R8-fda" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="eT2-Hv-OaF"/>
+                            <constraint firstItem="gcj-99-6oh" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="4" id="iTy-xd-C0s"/>
+                            <constraint firstItem="7OC-1d-XW9" firstAttribute="top" secondItem="gcj-99-6oh" secondAttribute="bottom" constant="8" id="iUU-l6-cw6"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="FFw-R8-fda" secondAttribute="bottom" id="rUu-Ir-pie"/>
+                            <constraint firstItem="gcj-99-6oh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="yuE-Cg-UAl"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="인기 도시" id="8qc-c5-tX9"/>
+                    <connections>
+                        <outlet property="searchBar" destination="gcj-99-6oh" id="1R8-bC-Ms8"/>
+                        <outlet property="segmentedControl" destination="7OC-1d-XW9" id="Kwb-rl-Ick"/>
+                        <outlet property="tableView" destination="FFw-R8-fda" id="8EA-W9-VZA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
