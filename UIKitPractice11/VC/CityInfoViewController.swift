@@ -66,4 +66,13 @@ class CityInfoViewController: UIViewController, UITableViewDelegate, UITableView
         
         return cell ?? UITableViewCell()
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: CityDetailViewController.identifier) as? CityDetailViewController else { return }
+        let city = selectedCities[indexPath.row]
+        
+        vc.put(city)
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }

@@ -79,6 +79,38 @@
             </objects>
             <point key="canvasLocation" x="27" y="4"/>
         </scene>
+        <!--City Detail View Controller-->
+        <scene sceneID="Ve6-VF-c34">
+            <objects>
+                <viewController storyboardIdentifier="CityDetailViewController" id="ggY-EW-XHX" customClass="CityDetailViewController" customModule="UIKitPractice11" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="s7K-8t-d6y">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJo-qv-iGq">
+                                <rect key="frame" x="0.0" y="118" width="393" height="666"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="TJK-c1-RPZ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="TJK-c1-RPZ" firstAttribute="trailing" secondItem="jJo-qv-iGq" secondAttribute="trailing" id="989-4l-3f1"/>
+                            <constraint firstItem="jJo-qv-iGq" firstAttribute="leading" secondItem="TJK-c1-RPZ" secondAttribute="leading" id="BP7-BL-NIV"/>
+                            <constraint firstItem="jJo-qv-iGq" firstAttribute="top" secondItem="TJK-c1-RPZ" secondAttribute="top" id="Eg3-fW-VQf"/>
+                            <constraint firstItem="TJK-c1-RPZ" firstAttribute="bottom" secondItem="jJo-qv-iGq" secondAttribute="bottom" id="t6h-h3-jke"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cityLabel" destination="jJo-qv-iGq" id="5G0-EC-Zql"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4NA-W1-2yg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="958" y="4"/>
+        </scene>
     </scenes>
     <resources>
         <image name="building.2" catalog="system" width="120" height="128"/>
