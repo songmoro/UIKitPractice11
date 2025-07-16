@@ -49,6 +49,7 @@ class CityInfoCell: CustomCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        // TODO: Modifier
         containerView.layer.cornerRadius = 16
         containerView.clipsToBounds = true
         containerView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMinYCorner]
