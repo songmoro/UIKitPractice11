@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,11 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <viewController id="556-5K-PQk" customClass="CityInfoTableViewController" customModule="UIKitPractice11" customModuleProvider="target">
-            <layoutGuides>
-                <viewControllerLayoutGuide type="top" id="zyc-dq-wgV"/>
-                <viewControllerLayoutGuide type="bottom" id="kKg-At-OF9"/>
-            </layoutGuides>
-            <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CHE-ja-kfp">
+            <view key="view" contentMode="scaleToFill" id="CHE-ja-kfp">
                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
@@ -27,12 +24,13 @@
                         </connections>
                     </tableView>
                 </subviews>
+                <viewLayoutGuide key="safeArea" id="Nfd-Ld-xfQ"/>
                 <color key="backgroundColor" systemColor="systemBrownColor"/>
                 <constraints>
                     <constraint firstItem="8wJ-fn-Soa" firstAttribute="top" secondItem="CHE-ja-kfp" secondAttribute="top" id="U1h-AP-lsL"/>
-                    <constraint firstItem="8wJ-fn-Soa" firstAttribute="leading" secondItem="CHE-ja-kfp" secondAttribute="leading" id="WFI-CH-2mp"/>
+                    <constraint firstItem="8wJ-fn-Soa" firstAttribute="leading" secondItem="Nfd-Ld-xfQ" secondAttribute="leading" id="WFI-CH-2mp"/>
                     <constraint firstAttribute="bottom" secondItem="8wJ-fn-Soa" secondAttribute="bottom" id="hdx-dl-4cP"/>
-                    <constraint firstAttribute="trailing" secondItem="8wJ-fn-Soa" secondAttribute="trailing" id="t0R-q4-cgo"/>
+                    <constraint firstItem="Nfd-Ld-xfQ" firstAttribute="trailing" secondItem="8wJ-fn-Soa" secondAttribute="trailing" id="t0R-q4-cgo"/>
                 </constraints>
             </view>
             <nil key="simulatedTopBarMetrics"/>

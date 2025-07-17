@@ -44,8 +44,17 @@ class CityInfoViewController: UIViewController {
 //        view.addSubview(vc.view)
 //        vc.didMove(toParent: self)
         
-        if navigationController?.tabBarItem.tag == 1 {
+        if navigationController?.tabBarItem.tag == 1 - 1 {
             guard let vc = Bundle.main.loadNibNamed("CityInfoTableViewController", owner: nil)?.first as? CityInfoTableViewController else { return }
+            subVC = vc
+            vc.view.frame = containerView.bounds
+            
+            addChild(vc)
+            containerView.addSubview(vc.view)
+            vc.didMove(toParent: self)
+        }
+        else {
+            guard let vc = Bundle.main.loadNibNamed("CityInfoCollectionViewController", owner: nil)?.first as? CityInfoCollectionViewController else { return }
             subVC = vc
             vc.view.frame = containerView.bounds
             
@@ -94,35 +103,35 @@ extension CityInfoViewController: UICollectionViewDelegate, UICollectionViewData
 }
 
 // MARK: TableView
-extension CityInfoViewController: UITableViewDelegate, UITableViewDataSource  {
-    func configureTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.rowHeight = 150
-        tableView.separatorStyle = .none
-        tableView.register(of: CityInfoCell.self)
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return selectedCities.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueCustomCell(of: CityInfoCell.self, for: indexPath)
-        let city = selectedCities[indexPath.row]
-        cell?.put(city)
-        
-        return cell ?? UITableViewCell()
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: CityDetailViewController.identifier) as? CityDetailViewController else { return }
-        let city = selectedCities[indexPath.row]
-        vc.put(city)
-        
-        navigationController?.pushViewController(vc, animated: true)
-    }
-}
+//extension CityInfoViewController: UITableViewDelegate, UITableViewDataSource  {
+//    func configureTableView() {
+//        tableView.delegate = self
+//        tableView.dataSource = self
+//        tableView.rowHeight = 150
+//        tableView.separatorStyle = .none
+//        tableView.register(of: CityInfoCell.self)
+//    }
+//    
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return selectedCities.count
+//    }
+//    
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueCustomCell(of: CityInfoCell.self, for: indexPath)
+//        let city = selectedCities[indexPath.row]
+//        cell?.put(city)
+//        
+//        return cell ?? UITableViewCell()
+//    }
+//    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        guard let vc = storyboard?.instantiateViewController(withIdentifier: CityDetailViewController.identifier) as? CityDetailViewController else { return }
+//        let city = selectedCities[indexPath.row]
+//        vc.put(city)
+//        
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
+//}
 
 // MARK: SegmentedControl
 extension CityInfoViewController {
@@ -144,6 +153,7 @@ extension CityInfoViewController {
         
         // TODO: 통합
         (subVC as? CityInfoTableViewController)?.put(selectedCities)
+        (subVC as? CityInfoCollectionViewController)?.put(selectedCities)
         tableView.reloadData()
         collectionView.reloadData()
     }
@@ -172,6 +182,7 @@ extension CityInfoViewController {
             
             // TODO: 통합
             (subVC as? CityInfoTableViewController)?.put(selectedCities)
+            (subVC as? CityInfoCollectionViewController)?.put(selectedCities)
             tableView.reloadData()
             collectionView.reloadData()
             return
@@ -187,6 +198,7 @@ extension CityInfoViewController {
         
         // TODO: 통합
         (subVC as? CityInfoTableViewController)?.put(selectedCities)
+        (subVC as? CityInfoCollectionViewController)?.put(selectedCities)
         tableView.reloadData()
         collectionView.reloadData()
     }
