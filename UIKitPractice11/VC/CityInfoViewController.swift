@@ -7,12 +7,9 @@
 
 import UIKit
 
-// TODO: 특정 상황에서 getCity() out of range 발생
 class CityInfoViewController: UIViewController {
     let cityInfo = CityInfo()
     var selectedCities: [City] = []
-//     TODO: 필터링한 데이터 보여줄 다른 방법
-//    var filteredCities: [City] = []
     
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var segmentedControl: UISegmentedControl!
@@ -40,11 +37,6 @@ extension CityInfoViewController: UITableViewDelegate, UITableViewDataSource  {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return selectedCities.count
-//        if searchBar.searchTextField.isEditing {
-//            return filteredCities.count
-//        }
-//        else {
-//        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -62,15 +54,6 @@ extension CityInfoViewController: UITableViewDelegate, UITableViewDataSource  {
         
         navigationController?.pushViewController(vc, animated: true)
     }
-    
-//    func getCity(_ indexPath: IndexPath) -> City {
-//        if searchBar.searchTextField.isEditing {
-//            filteredCities[indexPath.row]
-//        }
-//        else {
-//            
-//        }
-//    }
 }
 
 // MARK: SegmentedControl
