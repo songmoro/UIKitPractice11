@@ -26,9 +26,6 @@ class CityInfoTableViewController: UIViewController, HasModel, UITableViewDelega
     
     @IBOutlet var tableView: UITableView!
     
-    // TODO: HasModel 추가
-    // TODO: 세그먼트 이벤트 전달
-    // TODO: 데이터 리로드
     override func viewDidLoad() {
         print(#function, #fileID)
         super.viewDidLoad()
@@ -44,6 +41,10 @@ class CityInfoTableViewController: UIViewController, HasModel, UITableViewDelega
     override func viewDidAppear(_ animated: Bool) {
         print(#function, #fileID)
         super.viewDidAppear(animated)
+    }
+    
+    deinit {
+        print(#function, #fileID)
     }
     
     func configureTableView() {

@@ -7,18 +7,18 @@
 
 import UIKit
 
-class GameViewController: ViewController {
+class GameViewController: UIViewController {
     @IBOutlet var inputTextField: UITextField!
     @IBOutlet var numberLabel: UILabel!
     @IBOutlet var countLabel: UILabel!
     
     override func viewDidLoad() {
-        print(#file, #function)
+        print(#function, #fileID)
         super.viewDidLoad()
     }
     
     @IBAction func inputTextFieldDidEndOnExit(_ sender: UITextField) {
-        print(#function)
+        print(#function, #fileID)
     }
     
     @IBAction func returnKeyboard(_ sender: UITapGestureRecognizer) {
@@ -26,7 +26,7 @@ class GameViewController: ViewController {
     }
     
     @IBAction func inputTextFieldEditingDidEnd(_ sender: UITextField) {
-        print(#function)
+        print(#function, #fileID)
         let text = sender.text!
         let (clap, labelText) = calculate(text)
         

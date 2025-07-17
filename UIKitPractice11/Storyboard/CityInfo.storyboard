@@ -11,8 +11,8 @@
         <!--인기 도시-->
         <scene sceneID="Nl4-4o-S7k">
             <objects>
-                <navigationController id="XNn-W1-gI8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="1" title="인기 도시" image="building.2" catalog="system" selectedImage="building.2.fill" id="EIY-9l-5XY"/>
+                <navigationController storyboardIdentifier="CityInfoTableViewController" id="XNn-W1-gI8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" tag="1" title="인기 도시" image="building" catalog="system" selectedImage="building.fill" id="EIY-9l-5XY"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PAR-xi-0Kb">
                         <rect key="frame" x="0.0" y="118" width="393" height="44"/>
@@ -29,7 +29,7 @@
         <!--인기 도시-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="CityInfoViewController" customModule="UIKitPractice11" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CityInfoViewController" id="Y6W-OH-hqX" customClass="CityInfoViewController" customModule="UIKitPractice11" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -138,94 +138,23 @@
             </objects>
             <point key="canvasLocation" x="943" y="4"/>
         </scene>
-        <!--인기 도시-->
-        <scene sceneID="hls-M0-rnf">
+        <!--인기도시2-->
+        <scene sceneID="Lwz-04-GYc">
             <objects>
-                <viewController id="0aC-Yo-yAJ" customClass="VC" customModule="UIKitPractice11" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="btn-7q-3Ol">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ETi-Gp-UEj">
-                                <rect key="frame" x="0.0" y="173" width="393" height="611"/>
-                                <connections>
-                                    <segue destination="msu-8v-ksX" kind="embed" id="n9g-Sl-50j"/>
-                                </connections>
-                            </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAL-PO-WqU">
-                                <rect key="frame" x="5" y="128" width="75" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                <connections>
-                                    <action selector="button1Tapped:" destination="0aC-Yo-yAJ" eventType="touchUpInside" id="eue-qd-N60"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZAE-xG-tAK">
-                                <rect key="frame" x="313" y="128" width="75" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                <connections>
-                                    <action selector="button2Tapped:" destination="0aC-Yo-yAJ" eventType="touchUpInside" id="Cf0-7Z-3uS"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="mls-Fq-F2e"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="ZAE-xG-tAK" firstAttribute="top" secondItem="mls-Fq-F2e" secondAttribute="top" constant="10" id="4NV-PB-OYn"/>
-                            <constraint firstItem="ZAE-xG-tAK" firstAttribute="top" secondItem="mls-Fq-F2e" secondAttribute="top" constant="10" id="C0P-b5-zhk"/>
-                            <constraint firstItem="TAL-PO-WqU" firstAttribute="top" secondItem="mls-Fq-F2e" secondAttribute="top" constant="10" id="CGg-Qm-ZF7"/>
-                            <constraint firstItem="ETi-Gp-UEj" firstAttribute="leading" secondItem="mls-Fq-F2e" secondAttribute="leading" id="D3u-zx-0GT"/>
-                            <constraint firstItem="TAL-PO-WqU" firstAttribute="top" secondItem="mls-Fq-F2e" secondAttribute="top" constant="10" id="KEQ-Ea-cQ5"/>
-                            <constraint firstItem="TAL-PO-WqU" firstAttribute="leading" secondItem="mls-Fq-F2e" secondAttribute="leading" constant="5" id="POB-B1-HjW"/>
-                            <constraint firstItem="ETi-Gp-UEj" firstAttribute="top" secondItem="TAL-PO-WqU" secondAttribute="bottom" constant="10" id="SQ0-6u-skh"/>
-                            <constraint firstItem="ETi-Gp-UEj" firstAttribute="top" secondItem="ZAE-xG-tAK" secondAttribute="bottom" constant="10" id="i1h-5q-TPh"/>
-                            <constraint firstItem="mls-Fq-F2e" firstAttribute="bottom" secondItem="ETi-Gp-UEj" secondAttribute="bottom" id="ngC-Aj-VLO"/>
-                            <constraint firstItem="mls-Fq-F2e" firstAttribute="trailing" secondItem="ETi-Gp-UEj" secondAttribute="trailing" id="r2q-mP-qqI"/>
-                            <constraint firstItem="mls-Fq-F2e" firstAttribute="trailing" secondItem="ZAE-xG-tAK" secondAttribute="trailing" constant="5" id="woE-Jc-HE4"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="인기 도시" id="65v-jv-rkr"/>
+                <navigationController storyboardIdentifier="CityInfoCollectionViewController" id="LUG-jk-NXc" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" tag="2" title="인기도시2" image="building.2" catalog="system" selectedImage="building.2.fill" id="jPn-dw-jwN"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Dln-px-BlC">
+                        <rect key="frame" x="0.0" y="118" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
                     <connections>
-                        <outlet property="containerView" destination="ETi-Gp-UEj" id="FT0-Od-Cjn"/>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="IRQ-M9-fiO"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="k30-Kc-xAi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CLf-y2-ent" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-27" y="746"/>
-        </scene>
-        <!--CVC1-->
-        <scene sceneID="rzB-jl-pS5">
-            <objects>
-                <viewController storyboardIdentifier="CVC1" id="msu-8v-ksX" customClass="CVC1" customModule="UIKitPractice11" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="RdR-7P-spS" customClass="cityinfo">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="611"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="VGa-uZ-eLS"/>
-                        <color key="backgroundColor" systemColor="systemBrownColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fcG-iX-Os9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="969" y="660"/>
-        </scene>
-        <!--CVC2-->
-        <scene sceneID="bfk-YO-lIg">
-            <objects>
-                <viewController storyboardIdentifier="CVC2" id="ahs-3Y-Li6" customClass="CVC2" customModule="UIKitPractice11" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="tLW-Xf-jtD">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="Pco-d0-J0P"/>
-                        <color key="backgroundColor" systemColor="systemCyanColor"/>
-                    </view>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BNj-2l-txb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="943" y="1271"/>
+            <point key="canvasLocation" x="-1069" y="707"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="OjV-oD-kIa">
@@ -239,20 +168,19 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x4g-1c-skj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-894" y="773"/>
+            <point key="canvasLocation" x="326" y="773"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="thc-mU-SC3"/>
+    </inferredMetricsTieBreakers>
     <resources>
+        <image name="building" catalog="system" width="94" height="128"/>
         <image name="building.2" catalog="system" width="120" height="128"/>
         <image name="building.2.fill" catalog="system" width="108" height="128"/>
+        <image name="building.fill" catalog="system" width="90" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBrownColor">
-            <color red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemCyanColor">
-            <color red="0.1960784314" green="0.67843137249999996" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

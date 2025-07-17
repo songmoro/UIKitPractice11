@@ -28,8 +28,13 @@ class CityInfoCollectionViewController: UIViewController, HasModel, UICollection
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(#function, #file)
+        print(#function, #fileID)
         configureCollectionView()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        print(#function, #fileID)
     }
     
     func configureCollectionView() {
