@@ -27,17 +27,13 @@ class CityInfoViewController: UIViewController {
         configureSearchBar()
         configureSegmentedControl()
         
-        configureTableView()
-        configureCollectionView()
-        
-        // TODO: 제거
-        containerView.alpha = 0
-//        configureContainer()
+//        configureTableView()
+//        configureCollectionView()
+        configureContainer()
         
         didChangeSelectedSegment()
     }
     
-    // TODO: 스크롤 시 셀 사라짐 해결
     func configureContainer() {
 //        $0.willMove(toParent: nil)
 //        $0.view.removeFromSuperview()
@@ -49,17 +45,10 @@ class CityInfoViewController: UIViewController {
         
         guard let vc = Bundle.main.loadNibNamed("CityInfoTableViewController", owner: nil)?.first as? CityInfoTableViewController else { return }
         vc.view.frame = containerView.bounds
-
-        containerView.layer.borderColor = UIColor.red.cgColor
-        containerView.layer.borderWidth = 4
         
-        vc.view.layer.borderColor = UIColor.blue.cgColor
-        vc.view.layer.borderWidth = 2
-        
-        vc.tableView.layer.borderColor = UIColor.green.cgColor
-        vc.tableView.layer.borderWidth = 1
-        
+        addChild(vc)
         containerView.addSubview(vc.view)
+        vc.didMove(toParent: self)
     }
 }
 
