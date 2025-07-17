@@ -171,6 +171,7 @@ extension CityInfoViewController {
             selectedCities = filterCities()
             
             // TODO: 통합
+            (subVC as? CityInfoTableViewController)?.put(selectedCities)
             tableView.reloadData()
             collectionView.reloadData()
             return
@@ -185,6 +186,7 @@ extension CityInfoViewController {
         }
         
         // TODO: 통합
+        (subVC as? CityInfoTableViewController)?.put(selectedCities)
         tableView.reloadData()
         collectionView.reloadData()
     }
