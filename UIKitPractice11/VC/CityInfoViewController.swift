@@ -11,8 +11,8 @@ import UIKit
 class CityInfoViewController: UIViewController {
     let cityInfo = CityInfo()
     var selectedCities: [City] = []
-    // TODO: 필터링한 데이터 보여줄 다른 방법
-    var filteredCities: [City] = []
+//     TODO: 필터링한 데이터 보여줄 다른 방법
+//    var filteredCities: [City] = []
     
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var segmentedControl: UISegmentedControl!
@@ -39,17 +39,17 @@ extension CityInfoViewController: UITableViewDelegate, UITableViewDataSource  {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchBar.searchTextField.isEditing {
-            return filteredCities.count
-        }
-        else {
-            return selectedCities.count
-        }
+        return selectedCities.count
+//        if searchBar.searchTextField.isEditing {
+//            return filteredCities.count
+//        }
+//        else {
+//        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCustomCell(of: CityInfoCell.self, for: indexPath)
-        let city = getCity(indexPath)
+        let city = selectedCities[indexPath.row]
         cell?.put(city)
         
         return cell ?? UITableViewCell()
@@ -57,20 +57,20 @@ extension CityInfoViewController: UITableViewDelegate, UITableViewDataSource  {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: CityDetailViewController.identifier) as? CityDetailViewController else { return }
-        let city = getCity(indexPath)
+        let city = selectedCities[indexPath.row]
         vc.put(city)
         
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    func getCity(_ indexPath: IndexPath) -> City {
-        if searchBar.searchTextField.isEditing {
-            filteredCities[indexPath.row]
-        }
-        else {
-            selectedCities[indexPath.row]
-        }
-    }
+//    func getCity(_ indexPath: IndexPath) -> City {
+//        if searchBar.searchTextField.isEditing {
+//            filteredCities[indexPath.row]
+//        }
+//        else {
+//            
+//        }
+//    }
 }
 
 // MARK: SegmentedControl
@@ -109,22 +109,39 @@ extension CityInfoViewController {
         searchBar.searchTextField.addTarget(self, action: #selector(textFieldEditingChange), for: .editingChanged)
     }
     
+    // TODO: 로직 개선
     @objc func textFieldEditingChange(_ textField: UITextField) {
-        guard let text = textField.text?.lowercased(), !text.isEmpty else { return }
+        guard let text = textField.text?.lowercased(), !text.isEmpty else {
+            selectedCities = cityInfo.city.filter {
+                switch segmentedControl.selectedSegmentIndex {
+                case 1: $0.domestic_travel
+                case 2: !$0.domestic_travel
+                default: true
+                }
+            }
+            tableView.reloadData()
+            return
+        }
         
         // TODO: ㅂ ㅏ ㅇ ㅋ ㅗ ㄱ 같은 검색 성능 개선
-        filteredCities = selectedCities.filter {
-            $0.city_name.hasPrefix(text) ||
-            $0.lowerCasedCityEnglishName.hasPrefix(text) ||
-            $0.city_explain.hasPrefix(text)
-        }
+        selectedCities = cityInfo.city
+            .filter {
+                switch segmentedControl.selectedSegmentIndex {
+                case 1: $0.domestic_travel
+                case 2: !$0.domestic_travel
+                default: true
+                }
+            }
+            .filter {
+                $0.city_name.hasPrefix(text) ||
+                $0.lowerCasedCityEnglishName.hasPrefix(text) ||
+                $0.city_explain.hasPrefix(text)
+            }
         
         tableView.reloadData()
     }
     
     @objc func textFieldDidEndEditing() {
         view.endEditing(true)
-        
-//        tableView.reloadData()
     }
 }
