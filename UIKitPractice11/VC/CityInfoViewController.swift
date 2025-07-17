@@ -59,6 +59,14 @@ extension CityInfoViewController: UICollectionViewDelegate, UICollectionViewData
         
         return cell ?? UICollectionViewCell()
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: CityDetailViewController.identifier) as? CityDetailViewController else { return }
+        let city = selectedCities[indexPath.row]
+        vc.put(city)
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 // MARK: TableView
