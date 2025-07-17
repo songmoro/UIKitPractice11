@@ -10,6 +10,9 @@ import UIKit
 // TODO: 테이블 뷰, 컬렉션 뷰 컨트롤러 나눠서 불러오기
 class CityInfoViewController: UIViewController {
     let cityInfo = CityInfo()
+    let domesticCities = CityInfo().city.filter(\.domestic_travel)
+    let foreignCities = CityInfo().city.filter({ !$0.domestic_travel })
+    
     var selectedCities: [City] = []
     
     @IBOutlet var searchBar: UISearchBar!
@@ -105,14 +108,7 @@ extension CityInfoViewController {
     @objc func didChangeSelectedSegment() {
         view.endEditing(true)
         
-        selectedCities = {
-            return switch segmentedControl.selectedSegmentIndex {
-            case 0: cityInfo.city
-            case 1: cityInfo.city.filter(\.domestic_travel)
-            case 2: cityInfo.city.filter({ !$0.domestic_travel })
-            default: []
-            }
-        }()
+        selectedCities = filterCities()
         
         // TODO: 통합
         tableView.reloadData()
@@ -127,16 +123,20 @@ extension CityInfoViewController {
         searchBar.searchTextField.addTarget(self, action: #selector(textFieldEditingChange), for: .editingChanged)
     }
     
+    func filterCities() -> [City] {
+        return switch segmentedControl.selectedSegmentIndex {
+        case 0: cityInfo.city
+        case 1: domesticCities
+        case 2: foreignCities
+        default: []
+        }
+    }
+    
     // TODO: 로직 개선
     @objc func textFieldEditingChange(_ textField: UITextField) {
         guard let text = textField.text?.lowercased(), !text.isEmpty else {
-            selectedCities = cityInfo.city.filter {
-                switch segmentedControl.selectedSegmentIndex {
-                case 1: $0.domestic_travel
-                case 2: !$0.domestic_travel
-                default: true
-                }
-            }
+            selectedCities = filterCities()
+            
             // TODO: 통합
             tableView.reloadData()
             collectionView.reloadData()
@@ -145,19 +145,11 @@ extension CityInfoViewController {
         
         // TODO: ㅂ ㅏ ㅇ ㅋ ㅗ ㄱ 같은 검색 성능 개선
         // TODO: 중간 텍스트를 입력해도 검색 가능(콕 -> 방콕)
-        selectedCities = cityInfo.city
-            .filter {
-                switch segmentedControl.selectedSegmentIndex {
-                case 1: $0.domestic_travel
-                case 2: !$0.domestic_travel
-                default: true
-                }
-            }
-            .filter {
-                $0.city_name.hasPrefix(text) ||
-                $0.lowerCasedCityEnglishName.hasPrefix(text) ||
-                $0.city_explain.hasPrefix(text)
-            }
+        selectedCities = filterCities().filter {
+            $0.city_name.hasPrefix(text) ||
+            $0.lowerCasedCityEnglishName.hasPrefix(text) ||
+            $0.city_explain.hasPrefix(text)
+        }
         
         // TODO: 통합
         tableView.reloadData()
