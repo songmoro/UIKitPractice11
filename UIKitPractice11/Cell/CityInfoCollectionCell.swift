@@ -1,36 +1,42 @@
 //
-//  CityInfoCell.swift
+//  CityInfoCollectionCell.swift
 //  UIKitPractice11
 //
-//  Created by 송재훈 on 7/16/25.
+//  Created by 송재훈 on 7/17/25.
 //
 
 import UIKit
 import Kingfisher
 
-// TODO: 이름 변경 -> TableCell
-extension CityInfoCell {
-    typealias Input = City
+extension CityInfoCollectionCell {
+//    typealias Input = City
+    
+    struct Input {
+        let city: City
+        let width: CGFloat
+    }
     
     struct Model {
         let name: String
         let englishName: String
         let imageURL: String
         let explain: String
+        let width: CGFloat
     }
     
     func put(_ input: Input) {
         model = Model(
-            name: input.city_name,
-            englishName: input.city_english_name,
-            imageURL: input.city_image,
-            explain: input.city_explain
+            name: input.city.city_name,
+            englishName: input.city.city_english_name,
+            imageURL: input.city.city_image,
+            explain: input.city.city_explain,
+            width: input.width
         )
     }
 }
 
-class CityInfoCell: CustomCell {
-    @IBOutlet var containerView: UIView!
+// TODO: Table Cell과 병합
+class CityInfoCollectionCell: UICollectionViewCell, HasModel, HasIdentifier {
     @IBOutlet var cityImage: UIImageView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var explainLabel: UILabel!
@@ -43,11 +49,7 @@ class CityInfoCell: CustomCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        // TODO: Modifier
-        containerView.layer.cornerRadius = 16
-        containerView.clipsToBounds = true
-        containerView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMinYCorner]
+        cityImage.layer.masksToBounds = true
     }
     
     override func prepareForReuse() {
@@ -63,7 +65,7 @@ class CityInfoCell: CustomCell {
     func updateLabels() {
         guard let model else { return }
         updateTitle(model.name, model.englishName)
-        updateImage(model.imageURL)
+        updateImage(model.width, model.imageURL)
         updateExplain(model.explain)
     }
     
@@ -71,7 +73,9 @@ class CityInfoCell: CustomCell {
         titleLabel.text = "\(name) | \(englishName)"
     }
     
-    func updateImage(_ url: String) {
+    func updateImage(_ width: CGFloat, _ url: String) {
+        cityImage.layer.cornerRadius = width / 2
+        
         guard let url = URL(string: url) else { return }
         cityImage.kf.setImage(with: url, placeholder: UIImage(systemName: "arrow.circlepath"))
     }

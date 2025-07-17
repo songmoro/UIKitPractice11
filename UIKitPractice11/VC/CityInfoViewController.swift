@@ -8,7 +8,6 @@
 import UIKit
 
 // TODO: 테이블 뷰, 컬렉션 뷰 컨트롤러 나눠서 불러오기
-// TODO: 컬렉션 뷰 버전 구현
 class CityInfoViewController: UIViewController {
     let cityInfo = CityInfo()
     var selectedCities: [City] = []
@@ -16,14 +15,46 @@ class CityInfoViewController: UIViewController {
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSearchBar()
-        configureTableView()
         configureSegmentedControl()
         
+        configureTableView()
+        configureCollectionView()
+        
         didChangeSelectedSegment()
+    }
+}
+
+// MARK: Collection View
+extension CityInfoViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func configureCollectionView() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(of: CityInfoCollectionCell.self)
+        
+        let screen = UIScreen.main.bounds
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: screen.width * 0.4, height: screen.height * 0.3)
+        layout.minimumInteritemSpacing = 16
+        
+        collectionView.collectionViewLayout = layout
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return selectedCities.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueCustomCell(of: CityInfoCollectionCell.self, for: indexPath)
+        let city = selectedCities[indexPath.row]
+        let screen = UIScreen.main.bounds
+        cell?.put(.init(city: city, width: screen.width * 0.4))
+        
+        return cell ?? UICollectionViewCell()
     }
 }
 
@@ -83,7 +114,9 @@ extension CityInfoViewController {
             }
         }()
         
+        // TODO: 통합
         tableView.reloadData()
+        collectionView.reloadData()
     }
 }
 
@@ -104,11 +137,14 @@ extension CityInfoViewController {
                 default: true
                 }
             }
+            // TODO: 통합
             tableView.reloadData()
+            collectionView.reloadData()
             return
         }
         
         // TODO: ㅂ ㅏ ㅇ ㅋ ㅗ ㄱ 같은 검색 성능 개선
+        // TODO: 중간 텍스트를 입력해도 검색 가능(콕 -> 방콕)
         selectedCities = cityInfo.city
             .filter {
                 switch segmentedControl.selectedSegmentIndex {
@@ -123,7 +159,9 @@ extension CityInfoViewController {
                 $0.city_explain.hasPrefix(text)
             }
         
+        // TODO: 통합
         tableView.reloadData()
+        collectionView.reloadData()
     }
     
     @objc func textFieldDidEndEditing() {

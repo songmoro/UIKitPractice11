@@ -1,14 +1,14 @@
 //
-//  UITableViewCell+.swift
+//  UICollectionViewCell.swift
 //  UIKitPractice11
 //
-//  Created by 송재훈 on 7/15/25.
+//  Created by 송재훈 on 7/17/25.
 //
 
 import UIKit
 
 // TODO: 통합
-extension UITableViewCell {
+extension UICollectionViewCell {
     func resetTextFields(_ textFields: UITextField...) {
         textFields.forEach {
             $0.text = ""
