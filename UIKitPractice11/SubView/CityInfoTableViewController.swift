@@ -12,6 +12,9 @@ class CityInfoTableViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBOutlet var tableView: UITableView!
     
+    // TODO: HasModel 추가
+    // TODO: 세그먼트 이벤트 전달
+    // TODO: 데이터 리로드
     override func viewDidLoad() {
         print(#function, #fileID)
         super.viewDidLoad()
@@ -49,11 +52,12 @@ class CityInfoTableViewController: UIViewController, UITableViewDelegate, UITabl
         return cell ?? UITableViewCell()
     }
 
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        guard let vc = storyboard?.instantiateViewController(withIdentifier: CityDetailViewController.identifier) as? CityDetailViewController else { return }
-//        let city = selectedCities[indexPath.row]
-//        vc.put(city)
-//
-//        navigationController?.pushViewController(vc, animated: true)
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // TODO: Storyboard 네임
+        guard let vc = UIStoryboard(name: "CityInfo", bundle: nil).instantiateViewController(withIdentifier: CityDetailViewController.identifier) as? CityDetailViewController else { return }
+        let city = selectedCities[indexPath.row]
+        vc.put(city)
+
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
