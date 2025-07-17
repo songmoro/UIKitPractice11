@@ -12,7 +12,7 @@
         <scene sceneID="Nl4-4o-S7k">
             <objects>
                 <navigationController id="XNn-W1-gI8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="인기 도시" image="building.2" catalog="system" selectedImage="building.2.fill" id="EIY-9l-5XY"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="인기 도시" image="building.2" catalog="system" selectedImage="building.2.fill" id="EIY-9l-5XY"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PAR-xi-0Kb">
                         <rect key="frame" x="0.0" y="118" width="393" height="44"/>

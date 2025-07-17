@@ -7,8 +7,22 @@
 
 import UIKit
 
-class CityInfoTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    var selectedCities: [City] = CityInfo().city
+extension CityInfoTableViewController {
+    typealias Input = [City]
+    typealias Model = [City]
+    
+    func put(_ input: Input) {
+        model = input
+    }
+}
+
+class CityInfoTableViewController: UIViewController, HasModel, UITableViewDelegate, UITableViewDataSource {
+    var selectedCities = [City]()
+    var model: Model? {
+        didSet {
+            update()
+        }
+    }
     
     @IBOutlet var tableView: UITableView!
     
@@ -59,5 +73,11 @@ class CityInfoTableViewController: UIViewController, UITableViewDelegate, UITabl
         vc.put(city)
 
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func update() {
+        guard let model else { return }
+        selectedCities = model
+        tableView.reloadData()
     }
 }

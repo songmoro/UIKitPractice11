@@ -14,6 +14,7 @@ class CityInfoViewController: UIViewController {
     let foreignCities = CityInfo().city.filter({ !$0.domestic_travel })
     
     var selectedCities: [City] = []
+    var subVC: UIViewController?
     
     @IBOutlet var containerView: UIView!
     @IBOutlet var searchBar: UISearchBar!
@@ -43,12 +44,15 @@ class CityInfoViewController: UIViewController {
 //        view.addSubview(vc.view)
 //        vc.didMove(toParent: self)
         
-        guard let vc = Bundle.main.loadNibNamed("CityInfoTableViewController", owner: nil)?.first as? CityInfoTableViewController else { return }
-        vc.view.frame = containerView.bounds
-        
-        addChild(vc)
-        containerView.addSubview(vc.view)
-        vc.didMove(toParent: self)
+        if navigationController?.tabBarItem.tag == 1 {
+            guard let vc = Bundle.main.loadNibNamed("CityInfoTableViewController", owner: nil)?.first as? CityInfoTableViewController else { return }
+            subVC = vc
+            vc.view.frame = containerView.bounds
+            
+            addChild(vc)
+            containerView.addSubview(vc.view)
+            vc.didMove(toParent: self)
+        }
     }
 }
 
@@ -139,6 +143,7 @@ extension CityInfoViewController {
         selectedCities = filterCities()
         
         // TODO: 통합
+        (subVC as? CityInfoTableViewController)?.put(selectedCities)
         tableView.reloadData()
         collectionView.reloadData()
     }
