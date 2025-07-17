@@ -8,6 +8,7 @@
 import UIKit
 
 // TODO: 테이블 뷰, 컬렉션 뷰 컨트롤러 나눠서 불러오기
+// TODO: 컬렉션 뷰 버전 구현
 class CityInfoViewController: UIViewController {
     let cityInfo = CityInfo()
     var selectedCities: [City] = []
