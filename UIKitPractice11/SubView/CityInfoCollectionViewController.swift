@@ -57,8 +57,12 @@ class CityInfoCollectionViewController: UIViewController, HasModel, UICollection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCustomCell(of: CityInfoCollectionCell.self, for: indexPath)
         let city = selectedCities[indexPath.row]
-        let screen = UIScreen.main.bounds
-        cell?.put(.init(city: city, width: screen.width * 0.4))
+        cell?.put(city)
+        
+        DispatchQueue.main.async {
+            cell!.cityImage.layer.cornerRadius = cell!.cityImage.bounds.width / 2
+            cell?.cityImage.clipsToBounds = true
+        }
         
         return cell ?? UICollectionViewCell()
     }
